@@ -18,6 +18,16 @@ const Home = () => {
                 <b>এক্সাম বিল ম্যানেজমেন্ট সিস্টেম</b>
                 <p>{(new Date()).getFullYear() + '-' + ((new Date()).getMonth() + 1) + '-' + (new Date()).getDate()}</p>
             </div>
+            <div className="mt-5 pt-5 d-flex justify-content-center">
+                <div className="me-5 pe-5">
+                    <h3 style={{color: "#198754"}}>Teacher</h3>
+                    <button style={{width:"100px"}} type="button" class="me-5 btn btn-success">Log In</button>
+                </div>
+                <div className="md-5 pd-5">
+                    <h3 style={{marginLeft: "7px", color: "#dc3545"}}>Admin</h3>
+                    <button style={{width:"100px"}} type="button" class="btn btn-danger">Log In</button>
+                </div>
+            </div>
         </div>
     );
 };
