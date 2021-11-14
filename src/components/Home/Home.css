@@ -11,8 +11,13 @@
   transform: translate(-50%, -50%);
 }
 .header2{
+
     background-color: rgb(235, 181, 189);
-    height: 50px;
-    color: gray;
+    height: 80px;
+    color: rgb(41, 30, 30);
     font-size: 18px;
+}
+.billLine{
+    position: relative;
+    top: 20px;
 }

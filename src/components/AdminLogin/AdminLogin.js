@@ -1,8 +1,8 @@
 import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
 import logo from "../../images/University_of_Chittagong_logo.png";
-import "./LoginModal.css";
 
-function LoginModal(props) {
+
+function AdminLogin(props) {
   const imageStyle = {
     justifyContent: "center",
     alignItems: "center",
@@ -29,7 +29,7 @@ function LoginModal(props) {
           </Row>
           <Row>
             <Col style={{textAlign:'center',marginBottom:'10px'}}>
-              <p style={{fontWeight:'500'}}>Teacher Log In</p>
+              <p style={{fontWeight:'500'}}>Admin Log In</p>
             </Col>
           </Row>
           <Form>
@@ -57,4 +57,4 @@ function LoginModal(props) {
   );
 }
 
-export default LoginModal;
+export default AdminLogin;
