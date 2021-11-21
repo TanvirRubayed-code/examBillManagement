@@ -1,8 +1,15 @@
 .header{
-    background-color: lightblue;
+    background-color: white;
     position: relative;
     background-repeat: no-repeat;
     height: 100px;
+    color: black;
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.header img{
+    position: relative;
+    left: 40px;
 }
 .text{
     position: absolute;
@@ -10,14 +17,9 @@
   margin-top: 8vh;
   transform: translate(-50%, -50%);
 }
-.header2{
 
-    background-color: rgb(235, 181, 189);
-    height: 80px;
-    color: rgb(41, 30, 30);
-    font-size: 18px;
-}
 .billLine{
     position: relative;
     top: 20px;
 }
+

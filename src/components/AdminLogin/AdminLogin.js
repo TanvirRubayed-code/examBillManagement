@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
 import logo from "../../images/University_of_Chittagong_logo.png";
 
@@ -10,6 +11,16 @@ function AdminLogin(props) {
     color: "white",
     marginBottom:'10px'
   };
+
+  console.log(props.isLoggedIn);
+
+  const submitAdmin = (e) =>{
+    e.preventDefault();
+    props.setLoggedIn(true);
+    console.log('admin logged in');
+  }
+
+
   const margin = {marginBottom:'10px'} ;
   return (
     <Modal
@@ -32,7 +43,7 @@ function AdminLogin(props) {
               <p style={{fontWeight:'500'}}>Admin Log In</p>
             </Col>
           </Row>
-          <Form>
+          <Form onSubmit={submitAdmin}>
             <Row style={margin}>
               <Col>
                 <Form.Control placeholder="User ID" />
