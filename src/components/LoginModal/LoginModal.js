@@ -13,11 +13,12 @@ function LoginModal(props) {
   };
   const margin = {marginBottom:'10px'} ;
 
-  function mainPage(){
-    props.setDisplayLogin(true);
-    
+
+  const submitUser = (e) =>{
+    e.preventDefault();
+    props.setUserLoggedIn(true);
+    console.log('admin logged in');
   }
-  console.log(props.displayLogin);
 
 
   return (
@@ -41,7 +42,7 @@ function LoginModal(props) {
               <p style={{fontWeight:'500'}}>Teacher Log In</p>
             </Col>
           </Row>
-          <Form>
+          <Form onSubmit={submitUser}>
             <Row style={margin}>
               <Col>
                 <Form.Control placeholder="User ID" />
@@ -55,7 +56,7 @@ function LoginModal(props) {
             <Row>
               <Col></Col>
               <Col>
-                <Button onClick={mainPage} as="input" type="submit" value="Submit" />
+                <Button as="input" type="submit" value="Submit" />
               </Col>
               <Col></Col>
             </Row>

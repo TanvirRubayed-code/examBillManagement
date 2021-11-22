@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
-
   Route, Switch
 } from "react-router-dom";
+
 import Home from './components/Home/Home';
 import LoginModal from './components/LoginModal/LoginModal';
 import Footer from './components/Footer/Footer';
@@ -15,11 +14,12 @@ import AdminNavBar from './components/NavBar/AdminNavBar';
 import { useState , useEffect } from 'react';
 import LoginPage from './components/LoginPage/LoginPage';
 import AdminLogin from './components/AdminLogin/AdminLogin';
+import UserHome from './components/UserHome/UserHome';
 
 function App() {
 
 
-
+  const [ isUserLoggedIn, setUserLoggedIn ] = useState(false);
   const [ isLoggedIn, setLoggedIn ] = useState(false);
 
 
@@ -39,12 +39,15 @@ function App() {
           <Route exact path="/">
             <Home></Home>
             {
-              isLoggedIn ? <AdminNavBar></AdminNavBar> : <LoginPage isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}></LoginPage>
+              isLoggedIn===false && isUserLoggedIn===false ? 
+              <LoginPage isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}></LoginPage>
+              : isUserLoggedIn===true ? 
+              <UserHome></UserHome> :
+               isLoggedIn === true ?
+              <AdminNavBar></AdminNavBar> :
+              <App></App>
             }
-            {/* <LoginPage></LoginPage>
-            <AdminNavBar></AdminNavBar> */}
             <Footer></Footer>
-            {/* <FormControl></FormControl> */}
           </Route>
         </Switch>
       </Router>

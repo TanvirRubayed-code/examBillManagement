@@ -28,6 +28,9 @@ const LoginPage = (props) => {
           </button>
 
           <LoginModal
+            isUserLoggedIn={props.isUserLoggedIn}
+            setUserLoggedIn={props.setUserLoggedIn}
+            setHomeAction={props.setHomeAction}
             show={modalShow}
             onHide={() => setModalShow(false)}
           ></LoginModal>
@@ -44,7 +47,8 @@ const LoginPage = (props) => {
           </button>
 
           <AdminLogin
-            isLoggedIn={props.isLoggedIn} setLoggedIn={props.setLoggedIn}
+            isLoggedIn={props.isLoggedIn}
+            setLoggedIn={props.setLoggedIn}
             setHomeAction={props.setHomeAction}
             show={adminModalShow}
             onHide={() => setAdminModalShow(false)}

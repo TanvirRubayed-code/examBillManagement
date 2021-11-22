@@ -53,6 +53,9 @@ const AdminNavBar = () => {
     </Sidenav>
 
     <Switch >
+      <Route exact path="/">
+        <Dashboard></Dashboard>
+        </Route>
       <Route path="/dashboard">
         <Dashboard></Dashboard>
         </Route>

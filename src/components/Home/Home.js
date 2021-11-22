@@ -1,21 +1,26 @@
+import { Dashboard } from "@rsuite/icons";
 import React from "react";
+import { Link, Route } from "react-router-dom";
+import App from "../../App";
 import CULogo from "../../images/University_of_Chittagong_logo.png";
 import BillTop from "../BillTop/BillTop";
 import LoginPage from "../LoginPage/LoginPage";
 
 import "./Home.css";
 const Home = () => {
-
   return (
     <div>
       <div className="header d-flex">
-        <img
-          className="ms-2 mt-2"
-          style={{ height: "80px" }}
-          src={CULogo}
-          alt=""
-          srcset=""
-        />
+        <a href="/">
+          <img
+            className="ms-2 mt-2"
+            style={{ height: "80px" }}
+            src={CULogo}
+            alt=""
+            srcset=""
+          />
+        </a>
+
         <div className="text text-center fs-5 d-flex align-items-center justify-content-center p-2">
           <div>
             <b>চট্টগ্রাম বিশ্ববিদ্যালয়</b>
@@ -24,13 +29,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
-      
 
-
-    <div  className="forstyle"></div>
+      <div className="forstyle"></div>
     </div>
-    
   );
 };
 
