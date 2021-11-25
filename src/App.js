@@ -3,17 +3,11 @@ import {
   BrowserRouter as Router,
   Route, Switch
 } from "react-router-dom";
-
 import Home from './components/Home/Home';
-import LoginModal from './components/LoginModal/LoginModal';
 import Footer from './components/Footer/Footer';
-import FormControl from './components/FormControl/FormControl';
-
-import Test from './components/NavBar/Test';
 import AdminNavBar from './components/NavBar/AdminNavBar';
-import { useState , useEffect } from 'react';
+import { useState , } from 'react';
 import LoginPage from './components/LoginPage/LoginPage';
-import AdminLogin from './components/AdminLogin/AdminLogin';
 import UserHome from './components/UserHome/UserHome';
 
 function App() {
@@ -48,6 +42,7 @@ function App() {
               <App></App>
             }
             <Footer></Footer>
+
           </Route>
         </Switch>
       </Router>

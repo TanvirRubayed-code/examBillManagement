@@ -59,6 +59,36 @@ export class Courses extends Component {
     // axios.post('http://localhost:8080/examRemunaration/courseInsert.php', obj)
     //   .then(res => console.log(res.data));
 
+
+    // const API_PATH = "http://localhost:8080/examRemunaration/courseInsert.php";
+
+    // axios({
+    //   method: 'POST',
+    //   url: `${API_PATH}`,
+    //   headers: { 'content-type': 'application/json' },
+    //   data: obj
+    // })
+    //   .then(result => {
+    //     this.setState({
+    //       mailSent: result.data.sent
+    //     })
+    //   })
+    //   .catch(error => this.setState({ error: error.message }));
+
+
+    fetch('http://localhost:8080/examRemunaration/courseInsert.php', { // URL
+      body: JSON.stringify(obj), // data you send.
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'no-cors', // no-cors, cors, *same-origin
+      redirect: 'follow', // *manual, follow, error
+      referrer: 'no-referrer', // *client, no-referrer
+  })
+
+
     this.setState({
       course_id: "",
       course_name: "",
@@ -74,7 +104,7 @@ export class Courses extends Component {
 
         <form onSubmit={this.onSubmit} style={courseStyle}>
           <div className="form-group">
-            <label>Course </label>
+            <label>Course ID</label>
             <input
               type="text"
               className="form-control"

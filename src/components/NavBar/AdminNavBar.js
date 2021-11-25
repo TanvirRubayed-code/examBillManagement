@@ -1,7 +1,7 @@
 import React from "react";
-import { Sidenav, Nav, Dropdown, Button } from "rsuite";
+import { Sidenav, Nav, } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
-import {  Icon, } from '@rsuite/icons';
+
 import DashboardIcon from '@rsuite/icons/Dashboard';
 import PeoplesIcon from '@rsuite/icons/Peoples';
 import UserInfoIcon from '@rsuite/icons/UserInfo';
@@ -14,6 +14,7 @@ import Evaluators from "../Evaluators/Evaluators";
 import Courses from "../Courses/Courses";
 import Dashboard from "../Dashboard/Dashboard";
 import ExamCommittee from "../ExamCommittee/ExamCommittee";
+
 
 
 const AdminNavBar = () => {
@@ -43,6 +44,9 @@ const AdminNavBar = () => {
           <Nav.Item eventKey="2" icon={<PeoplesIcon />}>
           <Link style={linkStyle} to="/exam-committee">Add Exam Committee</Link>
           </Nav.Item>
+
+
+
           <Nav.Item className="blank" style={{height:"300px"}}>
            
           </Nav.Item>
@@ -71,6 +75,8 @@ const AdminNavBar = () => {
       <Route path="/exam-committee">
         <ExamCommittee></ExamCommittee>
       </Route>
+
+
     </Switch>
 
     </Router>
