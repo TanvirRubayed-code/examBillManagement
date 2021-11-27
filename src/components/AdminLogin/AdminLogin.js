@@ -1,9 +1,9 @@
+import { useEffect } from "react";
 import { Modal, Container, Row, Col, Form, Button } from "react-bootstrap";
 import logo from "../../images/University_of_Chittagong_logo.png";
-import "./LoginModal.css";
 
-function LoginModal(props) {
-  console.log(props);
+
+function AdminLogin(props) {
   const imageStyle = {
     justifyContent: "center",
     alignItems: "center",
@@ -11,19 +11,20 @@ function LoginModal(props) {
     color: "white",
     marginBottom:'10px'
   };
-  const margin = {marginBottom:'10px'} ;
 
+  console.log(props.isLoggedIn);
 
-  const submitUser = (e) =>{
+  const submitAdmin = (e) =>{
     e.preventDefault();
-    props.setUserLoggedIn(true);
+    props.setLoggedIn(true);
     console.log('admin logged in');
   }
 
 
+  const margin = {marginBottom:'10px'} ;
   return (
     <Modal
-    {...props}
+      {...props}
       size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -39,10 +40,10 @@ function LoginModal(props) {
           </Row>
           <Row>
             <Col style={{textAlign:'center',marginBottom:'10px'}}>
-              <p style={{fontWeight:'500'}}>Teacher Log In</p>
+              <p style={{fontWeight:'500'}}>Admin Log In</p>
             </Col>
           </Row>
-          <Form onSubmit={submitUser}>
+          <Form onSubmit={submitAdmin}>
             <Row style={margin}>
               <Col>
                 <Form.Control placeholder="User ID" />
@@ -67,4 +68,4 @@ function LoginModal(props) {
   );
 }
 
-export default LoginModal;
+export default AdminLogin;
