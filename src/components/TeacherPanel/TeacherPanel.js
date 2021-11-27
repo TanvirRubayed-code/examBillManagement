@@ -17,9 +17,9 @@ const TeacherPanel = () => {
                 <h3><b>পরীক্ষা সংক্রান্ত কাজের পারিতোষিক বিল ফরম</b></h3>
             </div>
             <div className="d-flex">
-                <div style={{width:"25%"}} className="ms-3 mb-3 mt-3 me-3">
+                <div style={{ width: "25%" }} className="ms-3 mb-3 mt-3 me-3">
                     <div>
-                        <img style={{ height: "100px" }} src={ProfilePic} alt="" srcset="" />
+                        <ProfilePicChange></ProfilePicChange>
                     </div>
                     <div>
                         <h6 style={{ marginLeft: "5px", marginTop: "5px" }}>পরীক্ষকের নাম (বাংলায়):</h6>
@@ -27,9 +27,8 @@ const TeacherPanel = () => {
                         <h6 style={{ marginLeft: "5px" }}>পদবী:</h6>
                         <h6 style={{ marginLeft: "5px" }}>বিষয়:</h6>
                     </div>
-                    <ProfilePicChange></ProfilePicChange>
                 </div>
-                <div style={{ width: "70%"}}>
+                <div style={{ width: "70%" }}>
                     <ReactBootStrap.Table bordered hover>
                         <thead>
                             <tr>

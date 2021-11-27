@@ -1,61 +1,58 @@
-.signup-w3ls {
-    width: 50%;
-    margin: 70px 25% 80%;
+* {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
-    display: table;
-    position: relative;
-}
-.signup-agile1{
-    width:100%;
-    float:center;
-}
-
-.signup-w3ls .signup-agile1 .form-control {
-    margin-bottom: 20px;
-}
-label.header {
-    font-size: 16px;
+    font-family: sans-serif;
+  }
+  
+  .Pp {
+    min-height: 100px;
+    display: flex;
+  }
+  
+  .container {
+    margin: auto; 
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .errorMsg {
+    color: red;
+    font-size: 24px;
+    margin: 3px 0;
+  }
+  
+  .imgPreview {
+    width:100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .imgPreview input[type="file"] {
+    display: none;
+  }
+  
+  .imgPreview .customFileUpload {
+    /* font-size: 22px;
     font-weight: 500;
-    width: 215px;
-    color: grey;
-    margin-right:10px;
-    text-align:justify;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: inline-block;
-    font-family: 'Nunito', sans-serif;
-}
-input#image{
-    padding:0 40px;
-    width:40%;
-    height:55px;
-    border: 1px solid #dadada;
-    color: grey;
-    text-align:justify;
-    outline: none;
-    letter-spacing: 1px;
-    font-size: 16px;
-    font-weight:normal;
-    font-family: 'Muli', sans-serif;
-    border-radius:30px;
-    -webkit-border-radius:30px;
-    -moz-border-radius:30px;
-    -o-border-radius:30px;
-    -ms-border-radius:30px; 
-}
-input#image:focus{
-    background-color:#f5f8fa !important;
-    border:1px solid #dadada;
-}
-input::-webkit-input-placeholder {
-color: grey;
-} 
-input:-moz-placeholder { /* Firefox 18- */
-color: grey;  
-} 
-input::-moz-placeholder {  /* Firefox 19+ */
-color: grey;  
-} 
-input:-ms-input-placeholder {  
-color: grey;  
-}
+    padding: 6px 12px; */
+    cursor: pointer;
+  }
+  
+  .button {
+    /* border: none;
+    outline: none; */
+    /* width: 100%;
+    margin: 10px 0 0 0;
+    padding: 14px 10px;
+    font-size: 17px;
+    font-weight: 600; */
+    cursor: pointer;
+    margin-left: 6px;
+    margin-top: 6px;
+  }
+  
