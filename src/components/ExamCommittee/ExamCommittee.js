@@ -107,7 +107,7 @@ export class Courses extends Component {
         //   })
         //   .catch(error => this.setState({ error: error.message }));
 
-        //CONNECTING TO PHP DATABASE 
+//CONNECTING TO PHP DATABASE 
 
         fetch('http://localhost/examRemunerationPHP-main/examcomInsert.php', { // URL
             body: JSON.stringify(obj), // data you send.
