@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./Courses.css";
 
 const courseStyle = {
@@ -102,6 +101,10 @@ export class Courses extends Component {
       <div className="coursedashboardstyle">
         <h3>Add New Course to the Database</h3>
 
+
+
+
+
         <form onSubmit={this.onSubmit} style={courseStyle}>
           <div className="form-group">
             <label>Course ID</label>
@@ -151,6 +154,18 @@ export class Courses extends Component {
             ></input>
           </div>
         </form>
+
+
+
+
+
+
+
+
+
+
+
+        
       </div>
     );
   }
