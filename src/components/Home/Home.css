@@ -1,0 +1,25 @@
+.header{
+    background-color: white;
+    position: relative;
+    background-repeat: no-repeat;
+    height: 100px;
+    color: black;
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.header img{
+    position: relative;
+    left: 40px;
+}
+.text{
+    position: absolute;
+  left: 50%; 
+  margin-top: 8vh;
+  transform: translate(-50%, -50%);
+}
+
+.billLine{
+    position: relative;
+    top: 20px;
+}
+
