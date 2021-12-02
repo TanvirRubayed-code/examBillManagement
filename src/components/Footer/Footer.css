@@ -1,6 +1,7 @@
 .footer{
     height: 400px;
-    margin-top: 100px;
+    margin-top: 200px;
+    position: relative;
     background-color: lightblue;
     
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Form, Modal, Row, Button } from "react-bootstrap";
 import BillTop from "../BillTop/BillTop";
 import logo from "../../images/University_of_Chittagong_logo.png";
+import { PostData } from "../../services/PostData";
 
 const imageStyle = {
   justifyContent: "center",
@@ -15,26 +16,29 @@ const margin = { marginBottom: "15px" };
 export class LoginPage extends Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.onChangeUserName = this.onChangeUserName.bind(this);
     this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
-
+    this.onChangeAdminUserName = this.onChangeAdminUserName.bind(this);
+    this.onChangeAdminPassword = this.onChangeAdminPassword.bind(this);
     this.onTeacherSubmit = this.onTeacherSubmit.bind(this);
-
-
+    this.onAdminSubmit = this.onAdminSubmit.bind(this);
 
     this.state = {
       teacherModalShow: false,
       adminModalShow: false,
       user_name: "",
       user_password: "",
+      admin_user_name: "",
+      admin_password: "",
     };
   }
+
+  // ------------ Onchange funciotns ----------
 
   onChangeUserName(e) {
     this.setState({
       user_name: e.target.value,
-      
     });
   }
   onChangeUserPassword(e) {
@@ -42,29 +46,73 @@ export class LoginPage extends Component {
       user_password: e.target.value,
     });
   }
+  onChangeAdminUserName(e) {
+    this.setState({
+      admin_user_name: e.target.value,
+    });
+  }
+  onChangeAdminPassword(e) {
+    this.setState({
+      admin_password: e.target.value,
+    });
+  }
 
   onTeacherSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state.user_name);
-    console.log(this.state.u_password);
-    const obj = {
+    const userData = {
       user_name: this.state.user_name,
       user_password: this.state.user_password,
     };
-    console.log(obj);
+    console.log(userData);
+    this.setState({ teacherModalShow: !this.state.teacherModalShow });
+
+    this.setState({
+      user_name: "",
+      user_password: "",
+    });
   }
 
+  // let url = "http://localhost:8080/examRemunaration/adminLogin.php";
 
+  onAdminSubmit(e) {
+    e.preventDefault();
+    const adminData = {
+      admin_name: this.state.admin_user_name,
+      admin_password: this.state.admin_password,
+    };
 
+    this.setState({ adminModalShow: !this.state.adminModalShow });
 
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin" : "http://localhost:3000"
+      },
+
+      body: JSON.stringify(adminData),
+    };
+    fetch(
+      "http://localhost:8080/examRemunaration/adminLogin.php",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((d) => console.log(d));
+
+    // PostData(url,adminData)
+    // .then(data=>{
+    //   console.log(data);
+    // });
+  }
+
+  Componentdit;
 
   handleTeacherModal() {
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
   }
 
   handleAdminModal() {
-    console.log(this.state.adminModalShow);
     this.setState({ adminModalShow: !this.state.adminModalShow });
   }
 
@@ -121,7 +169,7 @@ export class LoginPage extends Component {
                     <Row style={margin}>
                       <Col>
                         <Form.Control
-                          placeholder="User Name"
+                          placeholder="Username"
                           value={this.state.user_name}
                           onChange={this.onChangeUserName}
                           required
@@ -152,7 +200,7 @@ export class LoginPage extends Component {
             </Modal>
           </div>
 
-          {/* -----------*****************---------- Teacher Modal Start --------------************-------- */}
+          {/* -----------*****************---------- Teacher Modal end --------------************-------- */}
 
           {/* -----------*****************---------- Admin Modal Start --------------************-------- */}
 
@@ -196,10 +244,15 @@ export class LoginPage extends Component {
                       </h4>
                     </Col>
                   </Row>
-                  <Form>
+                  <Form onSubmit={this.onAdminSubmit}>
                     <Row style={margin}>
                       <Col>
-                        <Form.Control placeholder="User ID" required />
+                        <Form.Control
+                          placeholder="Username"
+                          value={this.state.admin_user_name}
+                          onChange={this.onChangeAdminUserName}
+                          required
+                        />
                       </Col>
                     </Row>
                     <Row style={margin}>
@@ -207,6 +260,8 @@ export class LoginPage extends Component {
                         <Form.Control
                           placeholder="Password"
                           type="password"
+                          value={this.state.admin_password}
+                          onChange={this.onChangeAdminPassword}
                           required
                         />
                       </Col>

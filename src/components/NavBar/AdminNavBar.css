@@ -2,3 +2,21 @@
     background-color: #f7f7fa !important;
   
 }
+.hover{
+    background-color: #add8e6 !important;
+    color: black !important;
+
+}
+.hover:hover{
+    background-color: tomato !important;
+    color: white !important;
+}
+.texthov:hover{
+    color: white !important;
+}
+.block:hover{
+    background-color: #add8e6 !important;
+}
+.texthov{
+    display: flex;
+}

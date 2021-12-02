@@ -1,10 +1,7 @@
-import { Dashboard } from "@rsuite/icons";
 import React from "react";
-import { Link, Route } from "react-router-dom";
-import App from "../../App";
+
 import CULogo from "../../images/University_of_Chittagong_logo.png";
-import BillTop from "../BillTop/BillTop";
-import LoginPage from "../LoginPage/LoginPage";
+
 
 import "./Home.css";
 const Home = () => {
