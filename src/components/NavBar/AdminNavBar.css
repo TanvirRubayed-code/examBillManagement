@@ -5,6 +5,7 @@
 .hover{
     background-color: #add8e6 !important;
     color: black !important;
+    border-bottom:1px solid white;
 
 }
 .hover:hover{
@@ -19,4 +20,10 @@
 }
 .texthov{
     display: flex;
+}
+.logout{
+    background-color: #add8e6 !important;
+}
+.logout:hover{
+    background-color: #fff6f6 !important;
 }

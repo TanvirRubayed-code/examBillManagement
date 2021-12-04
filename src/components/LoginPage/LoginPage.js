@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Col, Container, Form, Modal, Row, Button } from "react-bootstrap";
 import BillTop from "../BillTop/BillTop";
 import logo from "../../images/University_of_Chittagong_logo.png";
-import { PostData } from "../../services/PostData";
+import Footer from "../Footer/Footer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const imageStyle = {
   justifyContent: "center",
@@ -31,7 +33,21 @@ export class LoginPage extends Component {
       user_password: "",
       admin_user_name: "",
       admin_password: "",
+      adminShow: false,
+      teacherShow:false,
     };
+  }
+
+  notify() {
+    toast.error("Enter correct Username & Password", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   // ------------ Onchange funciotns ----------
@@ -64,14 +80,42 @@ export class LoginPage extends Component {
       user_name: this.state.user_name,
       user_password: this.state.user_password,
     };
-    console.log(userData);
+    
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
 
-    this.setState({
-      user_name: "",
-      user_password: "",
-    });
+    fetch("http://localhost:8080/examRemunaration/teacherLoginAuth.php", {
+      // URL
+      body: JSON.stringify(userData), // data you send.
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      redirect: "follow", // *manual, follow, error
+      referrer: "no-referrer", // *client, no-referrer
+    })
+    .then((res) => res.json())
+      .then((data) => this.handleTeacherAppFunction(data));
+
+    // this.setState({
+    //   user_name: "",
+    //   user_password: "",
+    // });
   }
+
+  handleTeacherAppFunction(data){
+    if (data === 1) {
+      this.setState({
+        teacherShow: true,
+      });
+      this.notify();
+    } else if (data[0].username.length > 0) {
+      this.props.setUserLoggedIn(true);
+      sessionStorage.setItem("username", data[0].username);
+    }
+  }
+  // let teacherUrl = 'http://localhost:8080/examRemunaration/teacherLoginAuth.php'
 
   // let url = "http://localhost:8080/examRemunaration/adminLogin.php";
 
@@ -84,30 +128,33 @@ export class LoginPage extends Component {
 
     this.setState({ adminModalShow: !this.state.adminModalShow });
 
-    const requestOptions = {
-      method: "POST",
+    fetch("http://localhost:8080/examRemunaration/adminLogin.php", {
+      // URL
+      body: JSON.stringify(adminData), // data you send.
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
       headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin" : "http://localhost:3000"
+        "content-type": "application/json",
       },
-
-      body: JSON.stringify(adminData),
-    };
-    fetch(
-      "http://localhost:8080/examRemunaration/adminLogin.php",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((d) => console.log(d));
-
-    // PostData(url,adminData)
-    // .then(data=>{
-    //   console.log(data);
-    // });
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      redirect: "follow", // *manual, follow, error
+      referrer: "no-referrer", // *client, no-referrer
+    })
+      .then((res) => res.json())
+      .then((data) => this.handleAppFunction(data));
   }
 
-  Componentdit;
-
+  handleAppFunction(data) {
+    if (data === 1) {
+      this.setState({
+        adminShow: true,
+      });
+      this.notify();
+    } else if (data[0].username.length > 0) {
+      this.props.setLoggedIn(true);
+      sessionStorage.setItem("adminName", data[0].username);
+    }
+  }
   handleTeacherModal() {
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
   }
@@ -120,6 +167,19 @@ export class LoginPage extends Component {
     return (
       <>
         <BillTop></BillTop>
+        
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
         <div className="mt-5 pt-5 d-flex justify-content-center">
           {/* -----------*****************---------- Teacher Modal Start --------------************-------- */}
 
@@ -281,6 +341,7 @@ export class LoginPage extends Component {
 
           {/* -----------*****************---------- Admin Modal End --------------************-------- */}
         </div>
+        <Footer></Footer>
       </>
     );
   }

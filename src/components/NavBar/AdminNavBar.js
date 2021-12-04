@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidenav, Nav, } from "rsuite";
+import { Sidenav, Nav, Button } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 
 import DashboardIcon from "@rsuite/icons/Dashboard";
@@ -14,11 +14,9 @@ import Evaluators from "../Evaluators/Evaluators";
 import Courses from "../Courses/Courses";
 import Dashboard from "../Dashboard/Dashboard";
 import ExamCommittee from "../ExamCommittee/ExamCommittee";
-import CreateUser from "../CreateUser/CreateUser";
-import AddOutlineIcon from "@rsuite/icons/AddOutline";
-import AdminIcon from '@rsuite/icons/Admin';
+import { useHistory } from "react-router-dom";
+import AdminIcon from "@rsuite/icons/Admin";
 import CreateAdmin from "../CreateAdmin/CreateAdmin";
-
 
 const widthSt = {
   width: "18%",
@@ -31,6 +29,13 @@ const linkStyle = {
 };
 
 const AdminNavBar = () => {
+  let history = useHistory();
+  const logoutFunc = () => {
+    sessionStorage.clear();
+    history.push('/');
+    window.location.reload();
+
+  };
   return (
     <>
       <div style={widthSt}>
@@ -42,7 +47,7 @@ const AdminNavBar = () => {
             activeKey="1"
           >
             <Sidenav.Body>
-              <Nav >
+              <Nav>
                 <Nav.Item
                   className="hover"
                   eventKey="1"
@@ -89,16 +94,21 @@ const AdminNavBar = () => {
                     Add Evaluators
                   </Link>
                 </Nav.Item>
-                <Nav.Item
-                  className="hover"
-                  eventKey="1"
-                  icon={<AdminIcon />}
-                >
-                  <Link className="texthov" style={linkStyle} to="/create-admin">
+                <Nav.Item className="hover" eventKey="1" icon={<AdminIcon />}>
+                  <Link
+                    className="texthov"
+                    style={linkStyle}
+                    to="/create-admin"
+                  >
                     Create Admin
                   </Link>
                 </Nav.Item>
-                
+
+                <Nav.Item className="logout" eventKey="1">
+                  <Button onClick={logoutFunc} color="red" appearance="primary">
+                        Log out
+                  </Button>
+                </Nav.Item>
 
                 <Nav.Item
                   className="blank hover block"
@@ -134,7 +144,6 @@ const AdminNavBar = () => {
           </Switch>
         </Router>
       </div>
-
     </>
   );
 };

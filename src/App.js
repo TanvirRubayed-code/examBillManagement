@@ -1,24 +1,30 @@
-import './App.css';
+import "./App.css";
 import {
   BrowserRouter as Router,
-  Route, Switch
+  Route,
+  Switch,
+  useHistory,
 } from "react-router-dom";
-import Home from './components/Home/Home';
-import AdminNavBar from './components/NavBar/AdminNavBar';
-import { useState , } from 'react';
-import LoginPage from './components/LoginPage/LoginPage';
-import UserHome from './components/UserHome/UserHome';
+import Home from "./components/Home/Home";
+import AdminNavBar from "./components/NavBar/AdminNavBar";
+import { useEffect, useState } from "react";
+import LoginPage from "./components/LoginPage/LoginPage";
+import UserHome from "./components/UserHome/UserHome";
 
 function App() {
+  const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
+  let history = useHistory();
 
-  const [ isUserLoggedIn, setUserLoggedIn ] = useState(false);
-  const [ isLoggedIn, setLoggedIn ] = useState(true);
-
-
-  function adminLoginAuth(value){
-    setLoggedIn(value);
-  }
+  useEffect(() => {
+    if (sessionStorage.getItem("adminName")) {
+      setLoggedIn(true);
+    }
+    if(sessionStorage.getItem("username")){
+      setUserLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div>
@@ -26,18 +32,23 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home></Home>
-            {
-              isLoggedIn===false && isUserLoggedIn===false ? 
-              <LoginPage adminLoginAuth={adminLoginAuth} isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}></LoginPage>
-              : isUserLoggedIn===true ? 
-              <UserHome></UserHome> :
-               isLoggedIn === true ?
-              <AdminNavBar></AdminNavBar> :
+            {isLoggedIn === false && isUserLoggedIn === false ? (
+              <LoginPage
+                isUserLoggedIn={isUserLoggedIn}
+                setUserLoggedIn={setUserLoggedIn}
+                isLoggedIn={isLoggedIn}
+                setLoggedIn={setLoggedIn}
+              ></LoginPage>
+            ) : isUserLoggedIn === true ? (
+              <UserHome></UserHome>
+            ) : isLoggedIn === true ? (
+              <AdminNavBar></AdminNavBar>
+            ) : (
               <App></App>
-            }
-
-
-
+            )}
+          </Route>
+          <Route path="/">
+            <App></App>
           </Route>
         </Switch>
       </Router>
