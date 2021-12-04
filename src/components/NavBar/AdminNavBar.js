@@ -7,6 +7,7 @@ import PeoplesIcon from '@rsuite/icons/Peoples';
 import UserInfoIcon from '@rsuite/icons/UserInfo';
 import ExpandOutlineIcon from '@rsuite/icons/ExpandOutline';
 import DocPassIcon from '@rsuite/icons/DocPass';
+import InfoOutlineIcon from '@rsuite/icons/InfoOutline';
 import "./AdminNavBar.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ExamActivities from "../ExamActivities/ExamActivities";
@@ -42,6 +43,9 @@ const AdminNavBar = () => {
           </Nav.Item>
           <Nav.Item eventKey="2" icon={<PeoplesIcon />}>
           <Link style={linkStyle} to="/exam-committee">Add Exam Committee</Link>
+          </Nav.Item>
+          <Nav.Item eventKey="2" icon={<InfoOutlineIcon />}>
+          <Link style={linkStyle} to="/semester_info">Add Semester Information</Link>
           </Nav.Item>
           <Nav.Item className="blank" style={{height:"300px"}}>
            

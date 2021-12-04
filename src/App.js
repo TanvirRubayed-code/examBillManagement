@@ -28,9 +28,9 @@ function App() {
 
     // window.location.reload();
 
-      // useEffect(()=>{
-      //   setLoggedIn(true);
-      // },[]);
+    //   useEffect(()=>{
+    //     setLoggedIn(true);
+    //   },[]);
 
 
 
@@ -39,19 +39,18 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <TeacherPanel></TeacherPanel>
-            {/* <Home></Home> */}
-{/*             
+          {/* <Home></Home>
             {
               isLoggedIn ? <AdminNavBar></AdminNavBar> : <LoginPage isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn}></LoginPage>
             }
-            {/* <LoginPage></LoginPage>
-            <AdminNavBar></AdminNavBar> */}
-            {/* <Footer></Footer>
-            {/* <FormControl></FormControl> */}
-            {/* {
+            <LoginPage></LoginPage>
+            <AdminNavBar></AdminNavBar>
+            <Footer></Footer>
+            <FormControl></FormControl> */}
+            <TeacherPanel></TeacherPanel>
+            {
               isUserLoggedIn ? <TeacherPanel></TeacherPanel> : <LoginPage isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}></LoginPage>
-            } */}
+            }
           </Route>
         </Switch>
       </Router>
