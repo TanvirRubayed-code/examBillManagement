@@ -1,5 +1,7 @@
 .boardstyle{
     position: absolute;
     top: 150px;
-    left: 250px;
+    left: 25%;
+    width: 68%;
+    border:1px solid black;
 }

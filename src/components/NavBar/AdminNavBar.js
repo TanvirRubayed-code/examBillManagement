@@ -17,6 +17,7 @@ import ExamCommittee from "../ExamCommittee/ExamCommittee";
 import { useHistory } from "react-router-dom";
 import AdminIcon from "@rsuite/icons/Admin";
 import CreateAdmin from "../CreateAdmin/CreateAdmin";
+import SemesterInfo from "../SemesterInfo/SemesterInfo";
 
 const widthSt = {
   width: "18%",
@@ -32,9 +33,9 @@ const AdminNavBar = () => {
   let history = useHistory();
   const logoutFunc = () => {
     sessionStorage.clear();
-    history.push('/');
+    localStorage.clear();
+    history.push("/");
     window.location.reload();
-
   };
   return (
     <>
@@ -57,6 +58,38 @@ const AdminNavBar = () => {
                     Dashboard
                   </Link>
                 </Nav.Item>
+                <Nav.Item className="hover" eventKey="1" icon={<AdminIcon />}>
+                  <Link
+                    className="texthov"
+                    style={linkStyle}
+                    to="/create-admin"
+                  >
+                    Create Admin
+                  </Link>
+                </Nav.Item>
+
+                <Nav.Item
+                  className="hover"
+                  eventKey="2"
+                  icon={<UserInfoIcon />}
+                >
+                  <Link className="texthov" style={linkStyle} to="/evaluators">
+                    Add new Evaluators
+                  </Link>
+                </Nav.Item>
+
+                <Nav.Item className="hover" eventKey="2" icon={<DocPassIcon />}>
+                  <Link className="texthov" style={linkStyle} to="/courses">
+                    Add new Courses
+                  </Link>
+                </Nav.Item>
+
+                <Nav.Item className="hover" eventKey="2" icon={<ExpandOutlineIcon />}>
+                  <Link className="texthov" style={linkStyle} to="/exam-info">
+                    Add Semester exam Info
+                  </Link>
+                </Nav.Item>
+
                 <Nav.Item
                   className="hover"
                   eventKey="2"
@@ -71,11 +104,6 @@ const AdminNavBar = () => {
                   </Link>
                 </Nav.Item>
 
-                <Nav.Item className="hover" eventKey="2" icon={<DocPassIcon />}>
-                  <Link className="texthov" style={linkStyle} to="/courses">
-                    Add Courses
-                  </Link>
-                </Nav.Item>
                 <Nav.Item className="hover" eventKey="2" icon={<PeoplesIcon />}>
                   <Link
                     className="texthov"
@@ -85,28 +113,10 @@ const AdminNavBar = () => {
                     Add Exam Committee
                   </Link>
                 </Nav.Item>
-                <Nav.Item
-                  className="hover"
-                  eventKey="2"
-                  icon={<UserInfoIcon />}
-                >
-                  <Link className="texthov" style={linkStyle} to="/evaluators">
-                    Add Evaluators
-                  </Link>
-                </Nav.Item>
-                <Nav.Item className="hover" eventKey="1" icon={<AdminIcon />}>
-                  <Link
-                    className="texthov"
-                    style={linkStyle}
-                    to="/create-admin"
-                  >
-                    Create Admin
-                  </Link>
-                </Nav.Item>
 
                 <Nav.Item className="logout" eventKey="1">
                   <Button onClick={logoutFunc} color="red" appearance="primary">
-                        Log out
+                    Log out
                   </Button>
                 </Nav.Item>
 
@@ -130,6 +140,10 @@ const AdminNavBar = () => {
             </Route>
             <Route path="/evaluators">
               <Evaluators></Evaluators>
+            </Route>
+
+            <Route path="/exam-info">
+              <SemesterInfo></SemesterInfo>
             </Route>
 
             <Route path="/courses">

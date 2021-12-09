@@ -6,6 +6,7 @@ const UserHome = () => {
   let history = useHistory();
   const logoutFunc = () => {
     sessionStorage.clear();
+    localStorage.clear();
     history.push("/");
     window.location.reload();
   };

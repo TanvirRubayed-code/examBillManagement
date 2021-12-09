@@ -113,6 +113,7 @@ export class LoginPage extends Component {
     } else if (data[0].username.length > 0) {
       this.props.setUserLoggedIn(true);
       sessionStorage.setItem("username", data[0].username);
+      localStorage.setItem('userLogin',sessionStorage.getItem('username'))
     }
   }
   // let teacherUrl = 'http://localhost:8080/examRemunaration/teacherLoginAuth.php'
@@ -152,7 +153,9 @@ export class LoginPage extends Component {
       this.notify();
     } else if (data[0].username.length > 0) {
       this.props.setLoggedIn(true);
+      
       sessionStorage.setItem("adminName", data[0].username);
+      localStorage.setItem('login',sessionStorage.getItem('adminName'));
     }
   }
   handleTeacherModal() {

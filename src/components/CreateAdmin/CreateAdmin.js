@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./CreateAdmin.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const style = {
   marginTop: "20px",
@@ -20,6 +22,18 @@ class CreateAdmin extends Component {
     };
   }
 
+  notify() {
+    toast.success("Data Submitted...", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -34,6 +48,8 @@ class CreateAdmin extends Component {
       email: this.state.email,
       password: this.state.password,
     };
+
+    this.notify();
     console.log(addAdmin);
 
     fetch("http://localhost:8080/examRemunaration/setAdmin.php", {
@@ -55,12 +71,26 @@ class CreateAdmin extends Component {
       email: "",
       password: "",
     });
+
   }
 
   render() {
     return (
       <div className="margin">
-        <div className="evdashboardstyle">
+
+                <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
+        <div className="createAdmin">
           <h3>Create a new Admin</h3>
 
           <form className="form" onSubmit={this.onSubmit} style={style}>

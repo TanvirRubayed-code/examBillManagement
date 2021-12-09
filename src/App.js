@@ -2,8 +2,9 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  useHistory,
+  Routes,
+  Switch
+
 } from "react-router-dom";
 import Home from "./components/Home/Home";
 import AdminNavBar from "./components/NavBar/AdminNavBar";
@@ -15,13 +16,12 @@ function App() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-  let history = useHistory();
 
   useEffect(() => {
-    if (sessionStorage.getItem("adminName")) {
+    if (sessionStorage.getItem("adminName") || localStorage.getItem('login')) {
       setLoggedIn(true);
     }
-    if(sessionStorage.getItem("username")){
+    if(sessionStorage.getItem("username") || localStorage.getItem('userLogin')){
       setUserLoggedIn(true);
     }
   }, []);
@@ -30,8 +30,10 @@ function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
             <Home></Home>
+
+            
             {isLoggedIn === false && isUserLoggedIn === false ? (
               <LoginPage
                 isUserLoggedIn={isUserLoggedIn}
@@ -46,6 +48,8 @@ function App() {
             ) : (
               <App></App>
             )}
+
+
           </Route>
           <Route path="/">
             <App></App>
