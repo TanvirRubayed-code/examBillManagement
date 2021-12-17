@@ -8,8 +8,7 @@ import UserInfoIcon from "@rsuite/icons/UserInfo";
 import ExpandOutlineIcon from "@rsuite/icons/ExpandOutline";
 import DocPassIcon from "@rsuite/icons/DocPass";
 import "./AdminNavBar.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ExamActivities from "../ExamActivities/ExamActivities";
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import Evaluators from "../Evaluators/Evaluators";
 import Courses from "../Courses/Courses";
 import Dashboard from "../Dashboard/Dashboard";
@@ -18,9 +17,21 @@ import { useHistory } from "react-router-dom";
 import AdminIcon from "@rsuite/icons/Admin";
 import CreateAdmin from "../CreateAdmin/CreateAdmin";
 import SemesterInfo from "../SemesterInfo/SemesterInfo";
+import Tabulation from "../Tabulation/Tabulation";
+import TheoryActivities from "../TheoryActivities/TheoryActivities";
+import LabActivities from "../LabActivities/LabActivities";
+import RemunerationRate from "../RemunerationRate/RemunerationRate";
+
 
 const widthSt = {
   width: "18%",
+};
+
+const activeStyle={
+  color:'#cc2900',
+
+  textDecoration:'underline'
+  
 };
 
 const linkStyle = {
@@ -54,18 +65,21 @@ const AdminNavBar = () => {
                   eventKey="1"
                   icon={<DashboardIcon />}
                 >
-                  <Link className="texthov" style={linkStyle} to="/dashboard">
+                  <NavLink className="texthov" 
+                  activeStyle={activeStyle}
+                  style={linkStyle} to="/dashboard">
                     Dashboard
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item className="hover" eventKey="1" icon={<AdminIcon />}>
-                  <Link
+                  <NavLink
                     className="texthov"
                     style={linkStyle}
+                    activeStyle={activeStyle}
                     to="/create-admin"
                   >
                     Create Admin
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
 
                 <Nav.Item
@@ -73,46 +87,97 @@ const AdminNavBar = () => {
                   eventKey="2"
                   icon={<UserInfoIcon />}
                 >
-                  <Link className="texthov" style={linkStyle} to="/evaluators">
+                  <NavLink
+                   activeStyle={activeStyle}
+                   className="texthov" style={linkStyle} to="/evaluators">
                     Add new Evaluators
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
 
                 <Nav.Item className="hover" eventKey="2" icon={<DocPassIcon />}>
-                  <Link className="texthov" style={linkStyle} to="/courses">
+                  <NavLink 
+                   activeStyle={activeStyle}
+                  className="texthov" style={linkStyle} to="/courses">
                     Add new Courses
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
 
                 <Nav.Item className="hover" eventKey="2" icon={<ExpandOutlineIcon />}>
-                  <Link className="texthov" style={linkStyle} to="/exam-info">
-                    Add Semester exam Info
-                  </Link>
+                  <NavLink
+                   activeStyle={activeStyle}
+                  className="texthov" style={linkStyle} to="/exam-info">
+                    Semester exam Meeting
+                  </NavLink>
+                </Nav.Item>
+
+                
+
+                <Nav.Item className="hover" eventKey="2" icon={<PeoplesIcon />}>
+                  <NavLink
+                    className="texthov"
+                    activeStyle={activeStyle}
+                    style={linkStyle}
+                    to="/exam-committee"
+                  >
+                    Add Exam Committee
+                  </NavLink>
+                </Nav.Item>
+
+                <Nav.Item className="hover" eventKey="2" icon={<PeoplesIcon />}>
+                  <NavLink
+                    className="texthov"
+                    activeStyle={activeStyle}
+                    style={linkStyle}
+                    to="/tabulation-members"
+                  >
+                  Tabulation Members
+                  </NavLink>
                 </Nav.Item>
 
                 <Nav.Item
                   className="hover"
                   eventKey="2"
-                  icon={<ExpandOutlineIcon />}
+                  icon={<DocPassIcon />}
                 >
-                  <Link
+                  <NavLink
                     className="texthov"
+                    activeStyle={activeStyle}
                     style={linkStyle}
-                    to="/exam-activities"
+                    to="/theory-activities"
                   >
-                    Add Exam Activities
-                  </Link>
+                  Theory Exam Activities
+                  </NavLink>
                 </Nav.Item>
 
-                <Nav.Item className="hover" eventKey="2" icon={<PeoplesIcon />}>
-                  <Link
+                <Nav.Item
+                  className="hover"
+                  eventKey="2"
+                  icon={<DocPassIcon />}
+                >
+                  <NavLink
                     className="texthov"
+                    activeStyle={activeStyle}
                     style={linkStyle}
-                    to="/exam-committee"
+                    to="/lab-activities"
                   >
-                    Add Exam Committee
-                  </Link>
+                  Lab Exam Activities
+                  </NavLink>
                 </Nav.Item>
+
+                {/* <Nav.Item
+                  className="hover"
+                  eventKey="2"
+                  icon={<DocPassIcon />}
+                >
+                  <NavLink
+                    className="texthov"
+                    activeStyle={activeStyle}
+                    style={linkStyle}
+                    to="/remuneration"
+                  >
+                  Remuneration Rate
+                  </NavLink>
+                </Nav.Item> */}
 
                 <Nav.Item className="logout" eventKey="1">
                   <Button onClick={logoutFunc} color="red" appearance="primary">
@@ -120,10 +185,7 @@ const AdminNavBar = () => {
                   </Button>
                 </Nav.Item>
 
-                <Nav.Item
-                  className="blank hover block"
-                  style={{ height: "300px" }}
-                ></Nav.Item>
+                
               </Nav>
             </Sidenav.Body>
           </Sidenav>
@@ -135,8 +197,11 @@ const AdminNavBar = () => {
             <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route>
-            <Route path="/exam-activities">
-              <ExamActivities></ExamActivities>
+            <Route path="/theory-activities">
+              <TheoryActivities></TheoryActivities>
+            </Route>
+            <Route path="/lab-activities">
+              <LabActivities></LabActivities>
             </Route>
             <Route path="/evaluators">
               <Evaluators></Evaluators>
@@ -154,6 +219,12 @@ const AdminNavBar = () => {
             </Route>
             <Route path="/create-admin">
               <CreateAdmin></CreateAdmin>
+            </Route>
+            <Route path="/tabulation-members">
+              <Tabulation></Tabulation>
+            </Route>
+            <Route path="/remuneration">
+              <RemunerationRate></RemunerationRate>
             </Route>
           </Switch>
         </Router>

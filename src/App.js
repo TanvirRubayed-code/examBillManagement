@@ -2,7 +2,6 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
   Switch
 
 } from "react-router-dom";

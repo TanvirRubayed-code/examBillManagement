@@ -22,11 +22,6 @@ export class Courses extends Component {
     };
   }
 
-  onChangeCourseId(e) {
-    this.setState({
-      course_id: e.target.value,
-    });
-  }
 
   onChangeInCourse(e){
     this.setState({
