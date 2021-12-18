@@ -307,7 +307,7 @@ export class SemesterInfo extends Component  {
             
   
             <div style={style} className="form-group">
-              <input
+              <input style={{fontFamily:"monospace"}}
                 type="submit"
                 value="Submit"
                 className="btn btn-primary"

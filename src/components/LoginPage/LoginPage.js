@@ -18,7 +18,7 @@ const margin = { marginBottom: "15px" };
 export class LoginPage extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    // console.log(props);
     this.onChangeUserName = this.onChangeUserName.bind(this);
     this.onChangeUserPassword = this.onChangeUserPassword.bind(this);
     this.onChangeAdminUserName = this.onChangeAdminUserName.bind(this);
@@ -34,7 +34,7 @@ export class LoginPage extends Component {
       admin_user_name: "",
       admin_password: "",
       adminShow: false,
-      teacherShow:false,
+      teacherShow: false,
     };
   }
 
@@ -81,6 +81,7 @@ export class LoginPage extends Component {
       user_password: this.state.user_password,
     };
     
+
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
 
     fetch("http://localhost:8080/examRemunaration/teacherLoginAuth.php", {
@@ -95,7 +96,7 @@ export class LoginPage extends Component {
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
     })
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((data) => this.handleTeacherAppFunction(data));
 
     // this.setState({
@@ -104,7 +105,7 @@ export class LoginPage extends Component {
     // });
   }
 
-  handleTeacherAppFunction(data){
+  handleTeacherAppFunction(data) {
     if (data === 1) {
       this.setState({
         teacherShow: true,
@@ -113,7 +114,7 @@ export class LoginPage extends Component {
     } else if (data[0].username.length > 0) {
       this.props.setUserLoggedIn(true);
       sessionStorage.setItem("username", data[0].username);
-      localStorage.setItem('userLogin',sessionStorage.getItem('username'))
+      localStorage.setItem("userLogin", sessionStorage.getItem("username"));
     }
   }
   // let teacherUrl = 'http://localhost:8080/examRemunaration/teacherLoginAuth.php'
@@ -126,6 +127,7 @@ export class LoginPage extends Component {
       admin_name: this.state.admin_user_name,
       admin_password: this.state.admin_password,
     };
+
 
     this.setState({ adminModalShow: !this.state.adminModalShow });
 
@@ -154,8 +156,9 @@ export class LoginPage extends Component {
     } else if (data[0].username.length > 0) {
       this.props.setLoggedIn(true);
       
+
       sessionStorage.setItem("adminName", data[0].username);
-      localStorage.setItem('login',sessionStorage.getItem('adminName'));
+      localStorage.setItem("login", sessionStorage.getItem("adminName"));
     }
   }
   handleTeacherModal() {
@@ -170,7 +173,7 @@ export class LoginPage extends Component {
     return (
       <>
         <BillTop></BillTop>
-        
+
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -183,7 +186,10 @@ export class LoginPage extends Component {
           pauseOnHover
         />
 
-        <div className="mt-5 pt-5 d-flex justify-content-center">
+        <div
+          style={{ fontFamily: "Times New Roman" }}
+          className="mt-5 pt-5 d-flex justify-content-center"
+        >
           {/* -----------*****************---------- Teacher Modal Start --------------************-------- */}
 
           <div className="me-5 pe-5">
@@ -196,7 +202,7 @@ export class LoginPage extends Component {
                 this.handleTeacherModal();
               }}
             >
-              Log In
+              <b style={{ fontFamily: "monospace" }}>Log In</b>
             </button>
 
             <Modal
@@ -275,7 +281,7 @@ export class LoginPage extends Component {
               class="btn btn-danger"
               onClick={() => this.handleAdminModal()}
             >
-              Log In
+              <b>Log In</b>
             </button>
 
             <Modal

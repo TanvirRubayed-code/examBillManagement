@@ -15,15 +15,19 @@ function App() {
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-
+  const [username,setUsername]=useState('');
   useEffect(() => {
+  
     if (sessionStorage.getItem("adminName") || localStorage.getItem('login')) {
+      
       setLoggedIn(true);
     }
     if(sessionStorage.getItem("username") || localStorage.getItem('userLogin')){
       setUserLoggedIn(true);
     }
   }, []);
+
+
 
   return (
     <div>
@@ -35,13 +39,14 @@ function App() {
             
             {isLoggedIn === false && isUserLoggedIn === false ? (
               <LoginPage
+                setUsername={setUsername}
                 isUserLoggedIn={isUserLoggedIn}
                 setUserLoggedIn={setUserLoggedIn}
                 isLoggedIn={isLoggedIn}
                 setLoggedIn={setLoggedIn}
               ></LoginPage>
             ) : isUserLoggedIn === true ? (
-              <UserHome></UserHome>
+              <UserHome username={username}></UserHome>
             ) : isLoggedIn === true ? (
               <AdminNavBar></AdminNavBar>
             ) : (

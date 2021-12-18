@@ -7,11 +7,9 @@
     border-bottom: 1px solid lightgray;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
 }
-.header img{
-    position: relative;
-    left: 40px;
-}
+
 .text{
+    
     position: absolute;
   left: 50%; 
   margin-top: 8vh;
@@ -23,3 +21,13 @@
     top: 20px;
 }
 
+.mujiblogo{
+    width: 9em;
+    position: absolute;
+    right: 3em;
+}
+.cuLogo{
+    margin-top: 0.5em;
+    position: relative;
+    left: 3em;
+}

@@ -25,6 +25,7 @@ import RemunerationRate from "../RemunerationRate/RemunerationRate";
 
 const widthSt = {
   width: "18%",
+  fontFamily:"Times New Roman"
 };
 
 const activeStyle={
@@ -181,7 +182,7 @@ const AdminNavBar = () => {
 
                 <Nav.Item className="logout" eventKey="1">
                   <Button onClick={logoutFunc} color="red" appearance="primary">
-                    Log out
+                    <b style={{fontFamily:"monospace"}}>Log out</b>
                   </Button>
                 </Nav.Item>
 
