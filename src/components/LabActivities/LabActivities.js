@@ -87,7 +87,7 @@ export class LabActivities extends Component {
 
   render(){
     return (
-      <div className="margin">
+      <div className="marginlab">
         <div className="createAdmin">
           <h3>Lab Exam Activities</h3>
   

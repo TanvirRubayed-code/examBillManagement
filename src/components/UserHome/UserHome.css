@@ -53,3 +53,13 @@
 .print-button:hover{
   background-color: rgb(2, 126, 101);
 }
+
+.hideFormData{
+  position: relative;
+  top:0;
+}
+@media screen {
+  .hideFormData {
+     visibility: hidden;
+  }
+}
