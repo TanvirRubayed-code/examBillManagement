@@ -60,6 +60,6 @@
 }
 @media screen {
   .hideFormData {
-     visibility: hidden;
+     visibility: show;
   }
 }

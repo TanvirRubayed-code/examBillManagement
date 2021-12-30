@@ -3,408 +3,549 @@ import * as ReactBootStrap from "react-bootstrap";
 import CULogo from "../../images/University_of_Chittagong_logo.png";
 import "./TeacherPanel.css";
 
-class TeacherPanel extends React.Component  {
-  render(){
+class TeacherPanel extends React.Component {
+  render() {
     return (
-        <div className="hidden">
-          <div className="text-center mb-3 mt-3">
-            <img style={{ height: "80px", marginBottom:'0.5em' }} src={CULogo} alt="" />
+      <div className="hidden">
+        <div className="text-center">
+          <img
+            style={{ height: "55px", marginBottom: "0.5em" }}
+            src={CULogo}
+            alt=""
+          />
+          <div className="resister">
+            <small>রেজিস্টারের পৃষ্ঠা নং......................</small>
             <br />
-            <h4 className="formhead">
-              <b>পরীক্ষা সংক্রান্ত কাজের পারিতোষিক বিল ফরম</b>
-            </h4>
-            <small className="formhead">
-              ( বিল সংশ্লিষ্ট পরীক্ষা কমিটির চেয়ারম্যানের মাধ্যমে পরীক্ষা অনুষ্ঠিত
-              হওয়ার এক বছরের মধ্যে পরীক্ষা নিয়ন্ত্রক দপ্তরে দাখিল করতে হবে। প্রতি
-              পত্রের পরীক্ষার জন্য পৃথক পৃথকভাবে বিল দাখিল করতে হবে। )
-            </small>{" "}
-            <br />
+            <small>পরীক্ষকের ক্রমিক নং......................</small>
           </div>
-          <div className="formhead" style={{marginLeft:"1em", fontSize:"1em", marginBottom:"1em"}}>
-            <b>পরীক্ষকের নাম (বাংলায়) :</b> <br />
-            <b>ইংরেজীতে (বড় অক্ষরে) :</b> <br />
-            <b>বিষয় :</b><br />
-          </div>
-    
-          <div style={{ width: "100%" }}>
-            <table style={{fontSize:"12px"}} className="table">
-              <tr>
-              <th>ক্রমিক নং</th>
-                  <th>কাজের নাম</th>
-                  <th>পরীক্ষার নাম</th>
-                  <th>বৎসর</th>
-                  <th>কোর্স নং</th>
-                  <th>খাতা/ছাত্রের সংখ্যা</th>
-                  <th>কত ঘন্টার পরীক্ষা</th>
-                  <th>মোট দিন/সদস্য সংখ্যা</th>
-                  <th>অর্ধ/পূর্ণ দিন</th>
-                  <th>টাকার পরিমাণ</th>
-              </tr>
-              <tr>
-                  <td>
-                    <b>১.</b>
-                  </td>
-                  <td colSpan="9">
-                    <b>প্রশ্নপত্র প্রণয়নঃ</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>তত্ত্বীয় কোর্স</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>ব্যবহারিক কোর্স</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>টিউটোরিয়াল</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>২.</b>
-                  </td>
-                  <td>
-                    <b>প্রশ্নপত্র অনুবাদঃ</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৩.</b>
-                  </td>
-                  <td colSpan="9">
-                    <b>উত্তরপত্র পরীক্ষণঃ</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>তত্ত্বীয় কোর্স</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>ব্যবহারিক কোর্স</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>টিউটোরিয়াল</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>৩য় পরীক্ষণ</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৪.</b>
-                  </td>
-                  <td>
-                    <b>প্রশ্নপত্র সমীক্ষণ (মডারেশন)</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৫.</b>
-                  </td>
-                  <td>
-                    <b>মৌখিক পরীক্ষা</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৬.</b>
-                  </td>
-                  <td>
-                    <b>ব্যবহারিক পরীক্ষার সম্মানী</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৭.</b>
-                  </td>
-                  <td>
-                    <b>টেবুলেশন</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৮.</b>
-                  </td>
-                  <td colSpan="9">
-                    <b>পরীক্ষকঃ</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>ফিল্ড ওয়ার্ক/ইন্ডাস্ট্রিয়াল ট্যুর</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>ব্যবহারিক নোট বুক</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>সংগৃহীত নমুনা পরীক্ষণ</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>প্রজেক্ট/টার্ম পেপার/ইন্টার্ণশীপ রিপোর্ট</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>থিসিস</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>৯.</b>
-                  </td>
-                  <td>
-                    <b>প্রশ্নপত্র লিখন</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১০.</b>
-                  </td>
-                  <td>
-                    <b>প্রশ্নপত্র ফটোকপি</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১১.</b>
-                  </td>
-                  <td>
-                    <b>গ্রেডসিট লিখন</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১২.</b>
-                  </td>
-                  <td>
-                    <b>গ্রেডসিট যাচাইকরণ</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১৩.</b>
-                  </td>
-                  <td>
-                    <b>থিসিস গাইড</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১৪.</b>
-                  </td>
-                  <td>
-                    <b>সভাপতির সম্মানী ভাতা</b>
-                  </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <b>১৫.</b>
-                  </td>
-                  <td>
-                    <b>ইনসিডেন্টাল চার্জ</b>
-                  </td>
-                  <td colSpan="7">সংযুক্ত ভাউচার নং</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>টাকা=</td>
-                  <td colSpan="7"></td>
-                  <td>মোট=</td>
-                </tr>
-            </table>
+          <br />
+          <h4 className="blocksys">
+            <b style={{ color: "black" }}>
+              পরীক্ষা সংক্রান্ত কাজের পারিতোষিক বিল ফরম
+            </b>
+          </h4>
+          <small className="blocksys">
+            ( বিল সংশ্লিষ্ট পরীক্ষা কমিটির চেয়ারম্যানের মাধ্যমে পরীক্ষা অনুষ্ঠিত
+            হওয়ার এক বছরের মধ্যে পরীক্ষা নিয়ন্ত্রক দপ্তরে দাখিল করতে হবে। প্রতি
+            পরীক্ষার জন্য পৃথক পৃথকভাবে বিল দাখিল করতে হবে। )
+          </small>
+        </div>
+        <table className="tablehead">
+          <tr>
+            <td className="wd65">
+              <b>পরীক্ষকের নাম (বাংলায়) :</b>
+            </td>
+            <td>
+              <b>বিষয় :</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>ইংরেজীতে (বড় অক্ষরে) :</b>
+            </td>
+            <td>
+              <b>পরীক্ষার নাম :</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>পদবী, পূর্ণ ঠিকানা :</b>
+            </td>
+            <td>
+              <b>পরীক্ষার বৎসর :</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>মোবাইল নম্বর :</b>
+            </td>
+            <td>
+              <b>পরীক্ষা অনুষ্ঠানের তারিখ :</b>
+            </td>
+          </tr>
+        </table>
 
+        <div style={{ padding: "0 5px 0 5px", marginTop: "2px" }}>
+          <table
+            style={{ width: "100%", fontSize: "10px", lineHeight: "1.3" }}
+            className="table"
+          >
+            <tr>
+              <th style={{ width: "1em", textAlign: "center" }}>ক্রমিক নং</th>
+              <th style={{ width: "18em", textAlign: "center" }}>কাজের নাম</th>
+              <th style={{ width: "24em", textAlign: "center" }}>কোর্স নং</th>
+              <th style={{ width: "6em", textAlign: "center" }}>
+                খাতা/ছাত্রের<br></br>সংখ্যা
+              </th>
+              <th style={{width: "6em", textAlign: "center" }}>
+                কত ঘন্টার
+                <br />
+                পরীক্ষা
+              </th>
+              <th style={{ width: "6em",textAlign: "center" }}>
+                মোট দিন/
+                <br />
+                সদস্য সংখ্যা
+              </th>
+              <th style={{width: "6em", textAlign: "center" }}>অর্ধ/পূর্ণ<br />পত্র</th>
+              <th style={{ textAlign: "center" }}>টাকার পরিমাণ</th>
+            </tr>
+            <tr>
+              <td>
+                <b>১.</b>
+              </td>
+              <td colSpan="9">
+                <b>প্রশ্নপত্র প্রণয়নঃ</b>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>তত্ত্বীয় কোর্স</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>ব্যবহারিক কোর্স</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>টিউটোরিয়াল</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>টারমিনাল</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>২.</b>
+              </td>
+              <td>
+                <b>প্রশ্নপত্র সমীক্ষণ (মডারেশন)</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৩.</b>
+              </td>
+              <td>
+                <b>প্রশ্নপত্র অনুবাদঃ</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৪.</b>
+              </td>
+              <td>
+                <b>প্রশ্নপত্র লিখন</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৫.</b>
+              </td>
+              <td>
+                <b>প্রশ্নপত্র ফটোকপি</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৬.</b>
+              </td>
+              <td colSpan="9">
+                <b>উত্তরপত্র পরীক্ষণঃ</b>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>তত্ত্বীয় কোর্স</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>ব্যবহারিক কোর্স</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>টিউটোরিয়াল</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>টার্মিনাল</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>প্রেজেন্টেশন</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>৩য় পরীক্ষণ</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>
+                <b>৭.</b>
+              </td>
+              <td>
+                <b>মৌখিক পরীক্ষা</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৮.</b>
+              </td>
+              <td colSpan="9">
+                <b>পরীক্ষকঃ</b>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>ফিল্ড ওয়ার্ক/ইন্ডাস্ট্রিয়াল ট্যুর</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>ব্যবহারিক নোট বুক</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>সংগৃহীত নমুনা পরীক্ষণ</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>প্রজেক্ট/টার্ম পেপার/ইন্টার্ণশীপ রিপোর্ট</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>থিসিস (মাস্টার্স/এফ.ফিল/পিএইচ.ডি)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>৯.</b>
+              </td>
+              <td>
+                <b>ব্যবহারিক পরীক্ষার সম্মানী</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১০.</b>
+              </td>
+              <td>
+                <b>টেবুলেশন</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td>
+                <b>১১.</b>
+              </td>
+              <td>
+                <b>গ্রেডসিট লিখন</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১২.</b>
+              </td>
+              <td>
+                <b>গ্রেডসিট যাচাইকরণ</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১৩.</b>
+              </td>
+              <td>
+                <b>থিসিস গাইড/সুপারভিশন</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১৪.</b>
+              </td>
+              <td>
+                <b>সভাপতির সম্মানী ভাতা</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১৫.</b>
+              </td>
+              <td>
+                <b>পরীক্ষা কমিটির সদস্য সম্মানী</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১৬.</b>
+              </td>
+              <td>
+                <b>পরিদর্শক সম্মানী(প্রতি টিউটোরিয়াল)</b>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>১৭.</b>
+              </td>
+              <td colSpan="6">
+                <b>ইনসিডেন্টাল চার্জ(সংযুক্ত ভাউচার নং-)</b>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colSpan="6">মোট টাকা কথায়=</td>
+              <td style={{ float: "right", border: "none" }}>মোট টাকা=</td>
+              <td></td>
+            </tr>
+          </table>
+          <table className="nobordertable">
+            <tr>
+              <td>
+                ...................................................................
+              </td>
+              <td>.............................</td>
+            </tr>
+            <tr>
+              <td>প্রতি স্বাক্ষর, সভাপতি, পরীক্ষা কমিটি</td>
+              <td>পরীক্ষকের স্বাক্ষর</td>
+            </tr>
+            <tr>
+              <td style={{ paddingLeft: "40%" }}>(সীলমোহর)</td>
+            </tr>
+          </table>
+          <div className="formfooter">
+            <p>বিষয় : Computer Science and Engineering </p>
+            <br />
+            <p>পরীক্ষা :</p>
+            <br />
+            <p>
+              প্রফেসর/ড./জনাব
+              ........................................................................................................................................................................................................
+              কে মোট =
+              ..................................................................................................
+              টাকা{" "}
+            </p>
+            <p>
+              (কথায়)
+              ................................................................................................................................................................................................................................................................................................
+              মাত্র প্রদান করুন ।{" "}
+            </p>
+            <p>বিল সংশ্লিষ্ট চেক বুঝে পেলাম</p>
+          </div>
+          <table className="formfooter2">
+            <tr>
+              <td>.......................................</td>
+              <td>.............................</td>
+              <td>...........................</td>
+              <td>..........................</td>
+            </tr>
+            <tr>
+              <td>তারিখসহ গ্রহণকারীর স্বাক্ষর</td>
+              <td>বিল সহকারী</td>
+              <td>সেকশন অফিসার</td>
+              <td>উপ-পরীক্ষা নিয়ন্ত্রক, চ.বি</td>
+            </tr>
+          </table>
+          <div className="formfooter">
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "12px",
+                marginTop: "1em",
+              }}
+            >
+              <b>পরীক্ষা পারিতোষিক বিল প্রাপ্তি স্বীকার</b>
+            </p>
+            <br />
+            <p>বিষয় : ................................................................................................................................................................... পরীক্ষা : ..........................................................................................................................................................</p>
+            <br />
+            <p>
+              প্রফেসর/ড./জনাব
+              .............................................................................................................................................................................................................................
+              কে মোট =
+              ...........................................................................
+              টাকা{" "}
+            </p>
+            <p>
+              (কথায়)
+              ................................................................................................................................................................................................................................................................................................
+              প্রদান করা হল ।{" "}
+            </p>
+            <div className="footerlast">
+              <p>.............................................................. <br />
+              
+              হিসাব নিয়ামক/উপ-হিসাব নিয়ামক</p>
+            </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
-};
+}
 
 export default TeacherPanel;

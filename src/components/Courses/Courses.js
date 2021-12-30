@@ -118,7 +118,7 @@ export class Courses extends Component {
             </div>
             <div style={style} className="form-group">
               <label>
-                <b>Which semester Course</b>
+                <b>Semester</b>
               </label>
               <input
                 type="text"

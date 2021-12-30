@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Col, Container, Form, Modal, Row, Button } from "react-bootstrap";
 import BillTop from "../BillTop/BillTop";
 import logo from "../../images/University_of_Chittagong_logo.png";
-import Footer from "../Footer/Footer";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./LoginPage.css";
+import FooterSecond from "../Footer/Footer";
 
 const imageStyle = {
   justifyContent: "center",
@@ -80,7 +81,6 @@ export class LoginPage extends Component {
       user_name: this.state.user_name,
       user_password: this.state.user_password,
     };
-    
 
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
 
@@ -112,9 +112,11 @@ export class LoginPage extends Component {
       });
       this.notify();
     } else if (data[0].username.length > 0) {
+
       this.props.setUserLoggedIn(true);
+      this.props.setUsername(data[0].username);
       sessionStorage.setItem("username", data[0].username);
-      localStorage.setItem("userLogin", sessionStorage.getItem("username"));
+      localStorage.setItem("userLogin", data[0].username);
     }
   }
   // let teacherUrl = 'http://localhost:8080/examRemunaration/teacherLoginAuth.php'
@@ -127,7 +129,6 @@ export class LoginPage extends Component {
       admin_name: this.state.admin_user_name,
       admin_password: this.state.admin_password,
     };
-
 
     this.setState({ adminModalShow: !this.state.adminModalShow });
 
@@ -155,8 +156,6 @@ export class LoginPage extends Component {
       this.notify();
     } else if (data[0].username.length > 0) {
       this.props.setLoggedIn(true);
-      
-
       sessionStorage.setItem("adminName", data[0].username);
       localStorage.setItem("login", sessionStorage.getItem("adminName"));
     }
@@ -350,7 +349,9 @@ export class LoginPage extends Component {
 
           {/* -----------*****************---------- Admin Modal End --------------************-------- */}
         </div>
-        <Footer></Footer>
+        <div className="footer">
+          <FooterSecond></FooterSecond>
+        </div>
       </>
     );
   }

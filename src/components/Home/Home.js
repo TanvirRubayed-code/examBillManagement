@@ -11,7 +11,7 @@ const Home = () => {
         <a href="/">
           <img
             className="cuLogo"
-            style={{ height: "80px" }}
+            style={{ height: "75px" }}
             src={CULogo}
             alt=""
             srcset=""

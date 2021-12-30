@@ -1,13 +1,6 @@
-.footer{
-    height: 400px;
-    margin-top: 200px;
-    position: relative;
-    background-color: lightblue;
-    
-}
-
-.footer h2 {
-    text-align: center;
-    padding: 50px;
-    
+.footerback{
+    background-color: #212121;
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }

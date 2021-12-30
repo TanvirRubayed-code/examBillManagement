@@ -1,18 +1,73 @@
 
- table.table-bordered > thead > tr > th{
-    border:1px solid black;
-  }
-  table.table-bordered > tbody > tr > td{
-    border:1px solid black;
-}
-
 .table th , td, .formhead{
   font-family: kalpurush;
 }
 .table, td ,th{
-  border: 1px solid black;
+  border: 0.00001px solid black;
+
 }
 @page {
   size: A4;
-  margin: 0;
+}
+.formhead{
+  display: flex;
+  width: 100%;
+}
+
+.blocksys{
+  font-family: kalpurush;
+}
+
+.tablehead{
+  width:98%;
+  margin: 0 auto;
+  color: black;
+  font-size: 10px;
+}
+.wd65{
+  width: 65%;
+}
+.resister{
+  position: absolute;
+  top: 1em;
+  right: 7%;
+  font-family: kalpurush;
+}
+
+.nobordertable td{
+  border: none;
+  padding-left: 15%;
+}
+.nobordertable, .formfooter2{
+  width: 100%;
+  font-size: 10px;
+  color: black;
+  
+}
+.formfooter2{
+  margin-top: 1em;
+}
+.formfooter2 td{
+  text-align: center;
+  border: none;
+}
+
+.formfooter{
+  padding-left: 2em;
+  font-size: 10px;
+  font-family: kalpurush;
+  color: black;
+}
+
+.footerlast{
+  margin-top: 3em;
+  margin-right: 3em;
+  position: absolute;
+  right: 0;
+}
+
+@media screen {
+  .resister, .footerlast{
+    display: none !important;
+  }
 }
