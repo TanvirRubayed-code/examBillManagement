@@ -62,9 +62,7 @@ const UserHome = (props) => {
       console.log(userInformation);
     }
   };
-  console.log(image);
-  const i = "61d0c39d00ab0.png";
-  console.log(i);
+  console.log(userInformation);
 
   return (
     <>

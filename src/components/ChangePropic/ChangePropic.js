@@ -60,9 +60,9 @@ const ChangePropic = () => {
         setUpload(response.data);
       });
     console.log(upload);
-    if (upload == 0) {
+    if (upload === 0) {
       notifyerror();
-    } else if (upload == 1) {
+    } else if (upload === 1) {
       notifySuccess();
     }
   };

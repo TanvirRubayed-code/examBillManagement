@@ -10,7 +10,7 @@ $postdata = file_get_contents("php://input");
 $userID = json_decode($postdata);
 
 $sql = "SELECT * FROM `teacher_info`
-WHERE tid='hanif123';";
+WHERE tid='$userID';";
 
 $userInfoToUpdate = array();
 $user = mysqli_query($conn,$sql);

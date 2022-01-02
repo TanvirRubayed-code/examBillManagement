@@ -6,9 +6,18 @@ import "./TeacherPanel.css";
 class TeacherPanel extends React.Component {
   render() {
     console.log(this.props.data);
-    const {nameB,nameE,title, dept ,university,mobile,examYear, examName, startDate, endDate} = this.props.data ;
-
-
+    const {
+      nameB,
+      nameE,
+      title,
+      dept,
+      university,
+      mobile,
+      examYear,
+      examName,
+      startDate,
+      endDate,
+    } = this.props.data;
 
     return (
       <div className="hidden">
@@ -38,7 +47,8 @@ class TeacherPanel extends React.Component {
         <table className="tablehead">
           <tr>
             <td className="wd65">
-              <b>পরীক্ষকের নাম (বাংলায়) : </b>{nameB}
+              <b>পরীক্ষকের নাম (বাংলায়) : </b>
+              {nameB}
             </td>
             <td>
               <b>বিষয় : </b> {dept}
@@ -82,17 +92,21 @@ class TeacherPanel extends React.Component {
               <th style={{ width: "6em", textAlign: "center" }}>
                 খাতা/ছাত্রের<br></br>সংখ্যা
               </th>
-              <th style={{width: "6em", textAlign: "center" }}>
+              <th style={{ width: "6em", textAlign: "center" }}>
                 কত ঘন্টার
                 <br />
                 পরীক্ষা
               </th>
-              <th style={{ width: "6em",textAlign: "center" }}>
+              <th style={{ width: "6em", textAlign: "center" }}>
                 মোট দিন/
                 <br />
                 সদস্য সংখ্যা
               </th>
-              <th style={{width: "6em", textAlign: "center" }}>অর্ধ/পূর্ণ<br />পত্র</th>
+              <th style={{ width: "6em", textAlign: "center" }}>
+                অর্ধ/পূর্ণ
+                <br />
+                পত্র
+              </th>
               <th style={{ textAlign: "center" }}>টাকার পরিমাণ</th>
             </tr>
             <tr>
@@ -106,9 +120,13 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>তত্ত্বীয় কোর্স</td>
+              <td>{
+                this.props.data[0]?.map(theo =><span>{theo},</span>)
+                }</td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[1]?.map(hour => <span>{hour},</span>)
+  }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -116,9 +134,13 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>ব্যবহারিক কোর্স</td>
+              <td>{
+                this.props.data[4]?.map(lab => <span>{lab},</span>)
+                }</td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td>{
+                
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -126,10 +148,15 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>টিউটোরিয়াল</td>
+              <td>{
+                this.props.data[2]?.map(tutorial => <span>{tutorial},</span>)
+  }
+              </td>
               <td></td>
               <td></td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[3]?.map(tutoNumber => <span>{tutoNumber},</span>)
+                }</td>
               <td></td>
               <td></td>
             </tr>
@@ -178,7 +205,9 @@ class TeacherPanel extends React.Component {
               <td>
                 <b>প্রশ্নপত্র লিখন</b>
               </td>
-              <td></td>
+              <td>{
+                this.props.data[5]?.map(Qwriter => <span>{Qwriter},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -192,7 +221,9 @@ class TeacherPanel extends React.Component {
               <td>
                 <b>প্রশ্নপত্র ফটোকপি</b>
               </td>
-              <td></td>
+              <td>{
+                this.props.data[6]?.map(Qphotocopy => <span>{Qphotocopy},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -210,8 +241,12 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>তত্ত্বীয় কোর্স</td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[7]?.map(TheoExaminer => <span>{TheoExaminer},</span>)
+                }</td>
+              <td>{
+                this.props.data[8]?.map(numberOfPaper => <span>{numberOfPaper},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -220,8 +255,12 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>ব্যবহারিক কোর্স</td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[11]?.map(labExaminer => <span>{labExaminer},</span>)
+                }</td>
+              <td>{
+                this.props.data[12]?.map(labExaminee => <span>{labExaminee},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -230,8 +269,12 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>টিউটোরিয়াল</td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[9]?.map(tutorialExaminer => <span>{tutorialExaminer},</span>)
+                }</td>
+              <td>{
+                this.props.data[10]?.map(tutorialExaminee => <span>{tutorialExaminee},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -303,8 +346,12 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>ব্যবহারিক নোট বুক</td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[13]?.map(notebookExaminer => <span>{notebookExaminer},</span>)
+                }</td>
+              <td>{
+                this.props.data[14]?.map(totalNoteBook => <span>{totalNoteBook},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -323,8 +370,12 @@ class TeacherPanel extends React.Component {
             <tr>
               <td></td>
               <td>প্রজেক্ট/টার্ম পেপার/ইন্টার্ণশীপ রিপোর্ট</td>
-              <td></td>
-              <td></td>
+              <td>{
+                this.props.data[15]?.map(projectExaminer => <span>{projectExaminer},</span>)
+                }</td>
+              <td>{
+                this.props.data[16]?.map(projectExaminee => <span>{projectExaminee},</span>)
+                }</td>
               <td></td>
               <td></td>
               <td></td>
@@ -527,7 +578,12 @@ class TeacherPanel extends React.Component {
               <b>পরীক্ষা পারিতোষিক বিল প্রাপ্তি স্বীকার</b>
             </p>
             <br />
-            <p>বিষয় : ................................................................................................................................................................... পরীক্ষা : ..........................................................................................................................................................</p>
+            <p>
+              বিষয় :
+              ...................................................................................................................................................................
+              পরীক্ষা :
+              ..........................................................................................................................................................
+            </p>
             <br />
             <p>
               প্রফেসর/ড./জনাব
@@ -542,9 +598,11 @@ class TeacherPanel extends React.Component {
               প্রদান করা হল ।{" "}
             </p>
             <div className="footerlast">
-              <p>.............................................................. <br />
-              
-              হিসাব নিয়ামক/উপ-হিসাব নিয়ামক</p>
+              <p>
+                ..............................................................{" "}
+                <br />
+                হিসাব নিয়ামক/উপ-হিসাব নিয়ামক
+              </p>
             </div>
           </div>
         </div>

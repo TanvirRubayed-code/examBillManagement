@@ -45,11 +45,7 @@ $userInfo = array();
 if ($res->num_rows > 0 ) {
     $i = 0;
     $num = array(1,2,3,4,50);
-    $fake = [];
-    $fake['name'] = 'fakemaster';
-    $fake['roll'] = '123';
-    $fake['id'] = '19701022';
-    $fake['dept'] = 'CSE';
+
     while ($row = $res->fetch_assoc()) {
         $userInfo[$i]['username'] = $row['tid'];
         $userInfo[$i]['name'] = $row['teacherE_name'];
@@ -62,5 +58,4 @@ if ($res->num_rows > 0 ) {
 
 } 
 array_push($userInfo,$examInfo);
-array_push($userInfo,$fake);
 echo json_encode($userInfo);

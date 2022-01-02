@@ -42,6 +42,5 @@ if($_FILES['file'])
     else {
         echo 0;
     }
-    
 }
 
