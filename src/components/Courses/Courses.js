@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "./Courses.css";
 
 const style = {
@@ -22,6 +23,30 @@ export class Courses extends Component {
     };
   }
 
+  notifySuccess() {
+    toast.success("New Course Added into Database.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+  notifyWarning(){
+    toast.warning("Course is already added into Database.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
 
   onChangeInCourse(e){
     this.setState({
@@ -41,26 +66,7 @@ export class Courses extends Component {
       course_type: this.state.course_type
     };
 
-    console.log(obj);
-    // axios.post('http://localhost:8080/examRemunaration/courseInsert.php', obj)
-    //   .then(res => console.log(res.data));
-
-    // const API_PATH = "http://localhost:8080/examRemunaration/courseInsert.php";
-
-    // axios({
-    //   method: 'POST',
-    //   url: `${API_PATH}`,
-    //   headers: { 'content-type': 'application/json' },
-    //   data: obj
-    // })
-    //   .then(result => {
-    //     this.setState({
-    //       mailSent: result.data.sent
-    //     })
-    //   })
-    //   .catch(error => this.setState({ error: error.message }));
-
-    fetch("http://localhost:8080/examRemunaration/courseInsert.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/courseInsert.php", {
       // URL
       body: JSON.stringify(obj), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -71,7 +77,9 @@ export class Courses extends Component {
       mode: "cors", // no-cors, cors, *same-origin
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
-    });
+    })
+    .then(res => res.json())
+    .then(data => this.handleNotify(data));
 
     this.setState({
       course_id: "",
@@ -83,8 +91,29 @@ export class Courses extends Component {
     });
   }
 
+  handleNotify(data){
+    if(data===0){
+      this.notifyWarning();
+    }
+    else if(data===1){
+      this.notifySuccess();
+    }
+  }
+
   render() {
     return (
+      <>
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       <div className="margin">
         <div className="createAdmin">
           <h3>Add Course into DATABASE</h3>
@@ -121,7 +150,7 @@ export class Courses extends Component {
                 <b>Semester</b>
               </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="course_semester"
                 value={this.state.course_semester}
@@ -135,7 +164,7 @@ export class Courses extends Component {
                 <b>Hours per week</b>
               </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="course_hour"
                 value={this.state.course_hour}
@@ -149,7 +178,7 @@ export class Courses extends Component {
                 <b>Course Credit</b>
               </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="course_credit"
                 value={this.state.course_credit}
@@ -182,6 +211,7 @@ export class Courses extends Component {
           </form>
         </div>
       </div>
+      </>
     );
   }
 }

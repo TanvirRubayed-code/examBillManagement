@@ -4,9 +4,14 @@ import CULogo from "../../images/University_of_Chittagong_logo.png";
 import mujiblogo from "../../images/mujib.png";
 
 import "./Home.css";
+import { Link, Route } from "react-router-dom";
+import App from "../../App";
+import UserHome from "../UserHome/UserHome";
+import ActivitiesDetails from "../ActivitiesDetails/ActivitiesDetails";
 const Home = () => {
   return (
     <div>
+
       <div className="header d-flex">
         <a href="/">
           <img

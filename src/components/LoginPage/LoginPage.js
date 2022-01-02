@@ -84,7 +84,7 @@ export class LoginPage extends Component {
 
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
 
-    fetch("http://localhost:8080/examRemunaration/teacherLoginAuth.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/teacherLoginAuth.php", {
       // URL
       body: JSON.stringify(userData), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -99,10 +99,6 @@ export class LoginPage extends Component {
       .then((res) => res.json())
       .then((data) => this.handleTeacherAppFunction(data));
 
-    // this.setState({
-    //   user_name: "",
-    //   user_password: "",
-    // });
   }
 
   handleTeacherAppFunction(data) {
@@ -132,7 +128,7 @@ export class LoginPage extends Component {
 
     this.setState({ adminModalShow: !this.state.adminModalShow });
 
-    fetch("http://localhost:8080/examRemunaration/adminLogin.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/adminLogin.php", {
       // URL
       body: JSON.stringify(adminData), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

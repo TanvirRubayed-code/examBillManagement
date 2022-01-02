@@ -30,8 +30,8 @@ const Footer = () => {
                 <strong>University Of Chittagong</strong>
               </h3>
               <div style={{marginTop:'5px'}}>
-              <a style={{marginRight:'25px'}} href="https://www.facebook.com/ictcu" target='_blank'><FacebookIcon></FacebookIcon></a>
-              <a href="https://www.youtube.com/channel/UClQg__wc5h3uW_YHSD-iMbg" target='_blank'><Youtube></Youtube></a>
+              <a style={{marginRight:'25px'}} href="https://www.facebook.com/ictcu" target='_blank' rel="noreferrer"><FacebookIcon></FacebookIcon></a>
+              <a href="https://www.youtube.com/channel/UClQg__wc5h3uW_YHSD-iMbg" target='_blank' rel="noreferrer"><Youtube></Youtube></a>
               </div>
             </td>
             <td

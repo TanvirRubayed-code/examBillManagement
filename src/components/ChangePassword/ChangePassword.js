@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import "./CreateAdmin.css";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 const style = {
   marginTop: "20px",
 };
 
-class CreateAdmin extends Component {
+export class ChangePassword extends Component {
   constructor(props) {
     super(props);
 
@@ -15,15 +12,15 @@ class CreateAdmin extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      admin_name: "",
-      username: "",
-      email: "",
-      password: "",
+      current_pass: "",
+      new_pass: "",
+      confirm_pass: "",
     };
-  }
+  
+}
 
-  notifySuccess() {
-    toast.success("New Admin Created Successfully.", {
+notifySuccess() {
+    toast.success("Successfully Change password.", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -34,8 +31,8 @@ class CreateAdmin extends Component {
     });
   }
 
-  notifyFailed() {
-    toast.error("Username or Email is already used.", {
+  notifyCheck() {
+    toast.warning("Please check confirm password.", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -45,6 +42,21 @@ class CreateAdmin extends Component {
       progress: undefined,
     });
   }
+  notifyInvalid() {
+    toast.error("Invalid current password.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+
+
+
 
   onChange(e) {
     this.setState({
@@ -54,16 +66,18 @@ class CreateAdmin extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const addAdmin = {
-      admin_name: this.state.admin_name,
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
+    const pass = {
+      tid: localStorage.getItem("userLogin"),
+      current_pass: this.state.current_pass,
+      new_pass: this.state.new_pass,
+      confirm_pass: this.state.confirm_pass,
     };
 
-    fetch("http://localhost:8080/examBillManagement/src/server/setAdmin.php", {
+    // http://localhost:8080/examRemunaration/changePassword.php
+
+    fetch("http://localhost:8080/examBillManagement/src/server/changePassword.php", {
       // URL
-      body: JSON.stringify(addAdmin), // data you send.
+      body: JSON.stringify(pass), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
       headers: {
         "content-type": "application/json",
@@ -73,33 +87,25 @@ class CreateAdmin extends Component {
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
     })
-    .then(res => res.json())
-    .then(data => this.handleNotification(data));
-
-    
-
+      .then((res) => res.json())
+      .then((data) => this.handleNotify(data));
   }
-
-  handleNotification(data){
-    if(data === 1){
-      this.notifySuccess();
-      this.setState({
-        admin_name: "",
-        username: "",
-        email: "",
-        password: "",
-      });
-    }
-    else if( data === 0){
-      this.notifyFailed();
+  handleNotify(data) {
+    if (data === 0) {
+        this.notifyInvalid();
+    } else if (data === 1) {
+        this.notifySuccess();
+        sessionStorage.clear();
+        localStorage.clear();
+    } else if (data === 2) {
+        this.notifyCheck();
     }
   }
 
   render() {
     return (
-      <div className="margin">
-
-                <ToastContainer
+      <>
+        <ToastContainer
           position="top-center"
           autoClose={5000}
           hideProgressBar={false}
@@ -111,75 +117,79 @@ class CreateAdmin extends Component {
           pauseOnHover
         />
 
-        <div className="createAdmin">
-          <h3>Create a new Admin</h3>
+        <div className="width70 ">
+          <a href="/">
+            <button
+              style={{
+                borderRadius: "2px",
+                padding: "2px 8px",
+                margin: "4px 4px",
+              }}
+              className="btn-primary"
+            >
+              Back
+            </button>
+          </a>
+
+          <h3 className="text-center">
+            <u>Change Password</u>
+          </h3>
 
           <form className="form" onSubmit={this.onSubmit} style={style}>
             <div className="form-group">
               <label>
-                <b>Admin Name</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="admin_name"
-                value={this.state.admin_name}
-                onChange={this.onChange}
-                required="true"
-              ></input>
-            </div>
-            <div style={style} className="form-group">
-              <label>
-                <b>Username</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="username"
-                value={this.state.username}
-                onChange={this.onChange}
-                required="true"
-              ></input>
-            </div>
-            <div style={style} className="form-group">
-              <label>
-                <b>Email</b>
-              </label>
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                required="true"
-              ></input>
-            </div>
-            <div style={style} className="form-group">
-              <label>
-                <b>Password</b>
+                <b>Current Password</b>
               </label>
               <input
                 type="password"
                 className="form-control"
-                name="password"
-                value={this.state.password}
+                name="current_pass"
+                value={this.state.current_pass}
                 onChange={this.onChange}
                 required="true"
               ></input>
             </div>
 
             <div style={style} className="form-group">
-              <input style={{fontFamily:"monospace"}}
+              <label>
+                <b>New Password</b>
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="new_pass"
+                value={this.state.new_pass}
+                onChange={this.onChange}
+                required="true"
+              ></input>
+            </div>
+            <div style={style} className="form-group">
+              <label>
+                <b>Confirm Password</b>
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="confirm_pass"
+                value={this.state.confirm_pass}
+                onChange={this.onChange}
+                required="true"
+              ></input>
+            </div>
+
+            <div style={style} className="form-group">
+              <input
+                style={{ fontFamily: "monospace" }}
                 type="submit"
-                value="Submit"
+                value="Update Password"
                 className="btn btn-primary"
               ></input>
             </div>
           </form>
         </div>
-      </div>
+      </>
     );
   }
 }
 
-export default CreateAdmin;
+export default ChangePassword;

@@ -5,6 +5,11 @@ import "./TeacherPanel.css";
 
 class TeacherPanel extends React.Component {
   render() {
+    console.log(this.props.data);
+    const {nameB,nameE,title, dept ,university,mobile,examYear, examName, startDate, endDate} = this.props.data ;
+
+
+
     return (
       <div className="hidden">
         <div className="text-center">
@@ -33,34 +38,34 @@ class TeacherPanel extends React.Component {
         <table className="tablehead">
           <tr>
             <td className="wd65">
-              <b>পরীক্ষকের নাম (বাংলায়) :</b>
+              <b>পরীক্ষকের নাম (বাংলায়) : </b>{nameB}
             </td>
             <td>
-              <b>বিষয় :</b>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b>ইংরেজীতে (বড় অক্ষরে) :</b>
-            </td>
-            <td>
-              <b>পরীক্ষার নাম :</b>
+              <b>বিষয় : </b> {dept}
             </td>
           </tr>
           <tr>
             <td>
-              <b>পদবী, পূর্ণ ঠিকানা :</b>
+              <b>ইংরেজীতে (বড় অক্ষরে) : </b> {nameE}
             </td>
             <td>
-              <b>পরীক্ষার বৎসর :</b>
+              <b>পরীক্ষার নাম : </b> {examName}
             </td>
           </tr>
           <tr>
             <td>
-              <b>মোবাইল নম্বর :</b>
+              <b>পদবী, পূর্ণ ঠিকানা :</b> {title} , {dept}, {university}
             </td>
             <td>
-              <b>পরীক্ষা অনুষ্ঠানের তারিখ :</b>
+              <b>পরীক্ষার বৎসর : </b> {examYear}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>মোবাইল নম্বর : </b> {mobile}
+            </td>
+            <td>
+              <b>পরীক্ষা অনুষ্ঠানের তারিখ : </b> {startDate} - {endDate}
             </td>
           </tr>
         </table>

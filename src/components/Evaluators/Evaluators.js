@@ -34,8 +34,20 @@ export class Evaluators extends Component {
     });
   }
 
-  notify() {
-    toast.success("New Teacher Added into Database", {
+  notifySuccess() {
+    toast.success("New Teacher Added into Database.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+  notifyWarning() {
+    toast.warning("Teacher is already added into Database.", {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -59,10 +71,8 @@ export class Evaluators extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    this.notify();
-    console.log(evaluatorInfo);
 
-    fetch("http://localhost:8080/examRemunaration/teacherInsert.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/teacherInsert.php", {
       // URL
       body: JSON.stringify(evaluatorInfo), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -73,7 +83,9 @@ export class Evaluators extends Component {
       mode: "cors", // no-cors, cors, *same-origin
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
-    });
+    })
+    .then(res => res.json())
+    .then(data => this.handleNotify(data));
 
     this.setState({
       teacher_id: "",
@@ -86,6 +98,15 @@ export class Evaluators extends Component {
       email: "",
       password: "",
     });
+  }
+
+  handleNotify(data){
+    if(data ===0){
+      this.notifyWarning();
+    }
+    else if(data ===1){
+      this.notifySuccess();
+    }
   }
 
   render() {
@@ -192,7 +213,7 @@ export class Evaluators extends Component {
                   <b>Mobile no</b>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   name="mobile_no"
                   value={this.state.mobile_no}

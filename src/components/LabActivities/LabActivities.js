@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "./LabActivities.css";
 
 const style = {
@@ -6,44 +7,66 @@ const style = {
 };
 
 export class LabActivities extends Component {
-
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.onChangeInLab = this.onChangeInLab.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  
+
     this.state = {
-       course_id:"",
-       practical_question_setter:"",
-       practical_paper_examiner:"",
-       practical_examinee:"",
-       question_writer:"",
-       question_photocopier:"",
-       viva_examiner1:"",
-       viva_examiner2:"",
-       viva_examiner3:"",
-       viva_examiner4:"",
-       viva_examiner5:"",
-       viva_examiner6:"",
-       practical_notebook_examiner:"",
-       total_notebook:"",
-       project_examiner1:"",
-       project_examiner2:"",
-       total_examinee_project:"",
-
-    }
+      course_id: "",
+      practical_question_setter: "",
+      practical_paper_examiner: "",
+      practical_examinee: "",
+      question_writer: "",
+      question_photocopier: "",
+      viva_examiner1: "",
+      viva_examiner2: "",
+      viva_examiner3: "",
+      viva_examiner4: "",
+      viva_examiner5: "",
+      viva_examiner6: "",
+      practical_notebook_examiner: "",
+      total_notebook: "",
+      project_examiner1: "",
+      project_examiner2: "",
+      total_examinee_project: "",
+    };
   }
-  
-  onChangeInLab(e){
+  notifySuccess() {
+    toast.success("Lab Activities Added into Database.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+  notifyError() {
+    toast.error("Course Activities inserted earlier .", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+
+
+  onChangeInLab(e) {
     this.setState({
-      [e.target.name]:e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
 
-  onSubmit(e){
+  onSubmit(e) {
     e.preventDefault();
-    
+
     const labAct = {
       course_id: this.state.course_id,
       practical_question_setter: this.state.practical_question_setter,
@@ -62,10 +85,9 @@ export class LabActivities extends Component {
       project_examiner1: this.state.project_examiner1,
       project_examiner2: this.state.project_examiner2,
       total_examinee_project: this.state.total_examinee_project,
-
     };
-    
-    fetch("http://localhost:8080/examRemunaration/labActivities.php", {
+
+    fetch("http://localhost:8080/examBillManagement/src/server/labActivities.php", {
       // URL
       body: JSON.stringify(labAct), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -76,275 +98,313 @@ export class LabActivities extends Component {
       mode: "cors", // no-cors, cors, *same-origin
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
+    })
+    .then(res => res.json())
+    .then(data => this.handleNotify(data));
+
+
+    this.setState({
+      course_id: "",
+      practical_question_setter: "",
+      practical_paper_examiner: "",
+      practical_examinee: "",
+      question_writer: "",
+      question_photocopier: "",
+      viva_examiner1: "",
+      viva_examiner2: "",
+      viva_examiner3: "",
+      viva_examiner4: "",
+      viva_examiner5: "",
+      viva_examiner6: "",
+      practical_notebook_examiner: "",
+      total_notebook: "",
+      project_examiner1: "",
+      project_examiner2: "",
+      total_examinee_project: "",
     });
-
-    
-
-
   }
 
+  handleNotify(data){
+    if(data === 0){
+      this.notifyError();
+    }
+    else if(data === 1){
+      this.notifySuccess();
+    }
+  }
 
-
-  render(){
+  render() {
     return (
-      <div className="marginlab">
-        <div className="createAdmin">
-          <h3>Lab Exam Activities</h3>
-  
-          <form className="form" onSubmit={this.onSubmit} style={style}>
-            <div className="form-group">
-              <label>
-                <b>Course ID</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="course_id"
+      <>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
+        <div className="marginlab">
+          <div className="createAdmin">
+            <h3>Lab Exam Activities</h3>
+
+            <form className="form" onSubmit={this.onSubmit} style={style}>
+              <div className="form-group">
+                <label>
+                  <b>Course ID</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="course_id"
                   value={this.state.course_id}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Practical Question Setter</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="practical_question_setter"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Practical Question Setter</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="practical_question_setter"
                   value={this.state.practical_question_setter}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Practical Paper Examiner</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="practical_paper_examiner"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Practical Paper Examiner</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="practical_paper_examiner"
                   value={this.state.practical_paper_examiner}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Total Practical Examinee</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="practical_examinee"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Total Practical Examinee</b>
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="practical_examinee"
                   value={this.state.practical_examinee}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Question Writer</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="question_writer"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Question Writer</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="question_writer"
                   value={this.state.question_writer}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Question Photocopier</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="question_photocopier"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Question Photocopier</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="question_photocopier"
                   value={this.state.question_photocopier}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (1st)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner1"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (1st)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner1"
                   value={this.state.viva_examiner1}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (2nd)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner2"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (2nd)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner2"
                   value={this.state.viva_examiner2}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (3rd)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner3"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (3rd)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner3"
                   value={this.state.viva_examiner3}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (4th)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner4"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (4th)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner4"
                   value={this.state.viva_examiner4}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (5th)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner5"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (5th)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner5"
                   value={this.state.viva_examiner5}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Viva Examiner (6th)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="viva_examiner6"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Viva Examiner (6th)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="viva_examiner6"
                   value={this.state.viva_examiner6}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Practical Notebook Examiner</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="practical_notebook_examiner"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Practical Notebook Examiner</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="practical_notebook_examiner"
                   value={this.state.practical_notebook_examiner}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Total Notebook</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="total_notebook"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Total Notebook</b>
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="total_notebook"
                   value={this.state.total_notebook}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Project Examiner (1st)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="project_examiner1"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Project Examiner (1st)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="project_examiner1"
                   value={this.state.project_examiner1}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Project Examiner (2nd)</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="project_examiner2"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Project Examiner (2nd)</b>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="project_examiner2"
                   value={this.state.project_examiner2}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-            <div style={style} className="form-group">
-              <label>
-                <b>Total Examinee in Project</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="total_examinee_project"
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <label>
+                  <b>Total Examinee in Project</b>
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="total_examinee_project"
                   value={this.state.total_examinee_project}
                   onChange={this.onChangeInLab}
-                required="true"
-              ></input>
-            </div>
-  
-  
-  
-            <div style={style} className="form-group">
-              <input style={{fontFamily:"monospace"}}
-                type="submit"
-                value="Submit"
-                className="btn btn-primary"
-              ></input>
-            </div>
-          </form>
+                  required="true"
+                ></input>
+              </div>
+
+              <div style={style} className="form-group">
+                <input
+                  style={{ fontFamily: "monospace" }}
+                  type="submit"
+                  value="Submit"
+                  className="btn btn-primary"
+                ></input>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
-};
+}
 
 export default LabActivities;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "./Examcommittee.css";
 
 const style = {
@@ -15,8 +16,30 @@ export class ExamCommittee extends Component {
     this.state = {
        teacher_name:"",
        teacher_title:"",
-       meeting_no:""
+       semester:""
     }
+  }
+  notifySuccess() {
+    toast.success("Exam Committee member Added into Database.", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
+  notifyWarning() {
+    toast.warning("Exam Committee added earlier .", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
 
@@ -31,12 +54,12 @@ export class ExamCommittee extends Component {
     const comittee = {
       teacher_name: this.state.teacher_name,
       teacher_title: this.state.teacher_title,
-      meeting_no: this.state.meeting_no,
+      semester: this.state.semester,
 
     };
     
 
-    fetch("http://localhost:8080/examRemunaration/insertExamCommittee.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/insertExamCommittee.php", {
       // URL
       body: JSON.stringify(comittee), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -47,30 +70,70 @@ export class ExamCommittee extends Component {
       mode: "cors", // no-cors, cors, *same-origin
       redirect: "follow", // *manual, follow, error
       referrer: "no-referrer", // *client, no-referrer
-    });
+    })
+    .then(res => res.json())
+    .then(data => this.handleNotify(data));
+
+    
 
 
     this.setState({
       teacher_name: "",
       teacher_title: "",
-      meeting_no: "",
+      semester: "",
 
     });
 
 
   }
 
+  handleNotify(data){
+    if(data ===0){
+      this.notifyWarning();
+    }
+    else if(data===1){
+      this.notifySuccess();
+    }
+  }
 
 
   
   render(){
     return (
+      <>
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+
+
       <div className="margin">
         <div className="createAdmin">
           <h3>Exam Committee</h3>
   
           <form className="form" onSubmit={this.onSubmit} style={style}>
-            <div className="form-group">
+
+          <div className="form-group">
+              <label>
+                <b>Semester</b>
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                name="semester"
+                  value={this.state.semester}
+                  onChange={this.onChangeInCommittee}
+                required="true"
+              ></input>
+            </div>
+            <div style={style} className="form-group">
               <label>
                 <b>Teacher Name</b>
               </label>
@@ -98,19 +161,7 @@ export class ExamCommittee extends Component {
               ></input>
             </div>
   
-            <div style={style} className="form-group">
-              <label>
-                <b>Committee Meeting no</b>
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                name="meeting_no"
-                  value={this.state.meeting_no}
-                  onChange={this.onChangeInCommittee}
-                required="true"
-              ></input>
-            </div>
+            
   
             <div style={style} className="form-group">
               <input style={{fontFamily:"monospace"}}
@@ -122,6 +173,7 @@ export class ExamCommittee extends Component {
           </form>
         </div>
       </div>
+      </>
     );
   }
 };

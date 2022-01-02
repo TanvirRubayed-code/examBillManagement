@@ -1,24 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import BillTop from "../BillTop/BillTop";
 import { Button, ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import "./UserHome.css";
-import ReactToPrint from "react-to-print";
 import propic from "../images/men.jpg";
-import TeacherPanel from "../TeacherPanel/TeacherPanel";
 import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import ActivitiesDetails from "../ActivitiesDetails/ActivitiesDetails";
 import Footer from "../Footer/Footer";
+import EditUser from "../EditUser/EditUser";
+import ChangePropic from "../ChangePropic/ChangePropic";
+import ChangePassword from "../ChangePassword/ChangePassword";
 
 const userLeftSt = {
   borderRight: "1px solid grey",
-  //   marginLeft:'5%'
 };
+
+console.log("%PUBLIC_URL%");
 
 const UserHome = (props) => {
   const [userInformation, setUserInformation] = useState([]);
-
-  let componentRef = useRef();
+  const [image, setImage] = useState("");
 
   let history = useHistory();
   const logoutFunc = () => {
@@ -30,11 +31,14 @@ const UserHome = (props) => {
 
   let username = props.username;
   if (username.length < 1) {
-    username = sessionStorage.getItem("username");
+    username = localStorage.getItem("userLogin");
+  }
+  if (localStorage.getItem("userLogin")) {
+    sessionStorage.setItem("username", localStorage.getItem("userLogin"));
   }
 
   useEffect(() => {
-    fetch("http://localhost:8080/examRemunaration/userData.php", {
+    fetch("http://localhost:8080/examBillManagement/src/server/userData.php", {
       // URL
       body: JSON.stringify(username), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -47,12 +51,20 @@ const UserHome = (props) => {
       referrer: "no-referrer", // *client, no-referrer
     })
       .then((res) => res.json())
-      .then((data) => setUserInformation(data[0]));
+      .then((data) => setInform(data));
   }, [username]);
 
+  const setInform = (data) => {
+    if (data[0].image) {
+      setUserInformation(data);
+      setImage(data[0]?.image);
 
-  console.log(userInformation);
-
+      console.log(userInformation);
+    }
+  };
+  console.log(image);
+  const i = "61d0c39d00ab0.png";
+  console.log(i);
 
   return (
     <>
@@ -60,8 +72,17 @@ const UserHome = (props) => {
         <div>
           <BillTop></BillTop>
           <Switch>
-            <Route path="/activities-details">
+            <Route path="/activities/sem-:sem/y-:year">
               <ActivitiesDetails></ActivitiesDetails>
+            </Route>
+            <Route path="/update-info">
+              <EditUser></EditUser>
+            </Route>
+            <Route path="/change-pic">
+              <ChangePropic></ChangePropic>
+            </Route>
+            <Route path="/change-password">
+              <ChangePassword></ChangePassword>
             </Route>
 
             <div
@@ -69,12 +90,20 @@ const UserHome = (props) => {
               className="row"
             >
               <div style={userLeftSt} className="col-3">
-                <img className="propic" src={propic} alt="" />
+                {
+                  image === '12345678.jpg' ? 
+                  <img className="propic" ></img> :
+                  image && <img
+                  className="propic"
+                  src={require(`../../server/images/${image}`).default}
+                  alt=""
+                />
+                }
                 <br />
-                <h5>{userInformation?.name}</h5>
-                <p>{userInformation?.title} ,</p>
-                <p>{userInformation?.department} ,</p>
-                <p>{userInformation?.university}</p>
+                <h5>{userInformation[0]?.name}</h5>
+                <p>{userInformation[0]?.title} ,</p>
+                <p>{userInformation[0]?.department} ,</p>
+                <p>{userInformation[0]?.university}</p>
                 <br />
 
                 <DropdownButton
@@ -86,14 +115,25 @@ const UserHome = (props) => {
                   title="Settings"
                   style={{ fontFamily: "monospace" }}
                 >
-                  <Dropdown.Item eventKey="1">
-                    <b>Change Profile Pic</b>
-                  </Dropdown.Item>
                   <Dropdown.Item eventKey="2">
-                    <b>Edit Info</b>
+                    <Link to="/update-info">
+                      <b>Update Info</b>
+                    </Link>
                   </Dropdown.Item>
+
+                  <Dropdown.Item eventKey="1">
+                    <Link to="/change-pic">
+                      <b>Change Profile Pic</b>
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item eventKey="1">
+                    <Link to="/change-password">
+                      <b>Change Password</b>
+                    </Link>
+                  </Dropdown.Item>
+
                   <Dropdown.Item onClick={logoutFunc} eventKey="3">
-                    <b>Log Out</b>
+                    <b style={{ color: "red" }}>Log Out</b>
                   </Dropdown.Item>
                 </DropdownButton>
               </div>
@@ -111,40 +151,20 @@ const UserHome = (props) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1st</td>
-                      <td>1st semester BSc Engineering</td>
-                      <td>2021</td>
-                      <td>
-                        <Button className="print-button">Details</Button>
-                      </td>
-                    </tr>
-                    <tr class="active-row">
-                      <td>2nd</td>
-                      <td>2nd semester BSc Engineering</td>
-                      <td>2020</td>
-                      <td>
-                        <Link to="/activities-details">
-                          <Button className="print-button">Details</Button>
-                        </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3rd</td>
-                      <td>3rd semester BSc Engineering</td>
-                      <td>2020</td>
-                      <td>
-                        <button className="print-button">Details</button>
-                      </td>
-                    </tr>
-                    <tr class="active-row">
-                      <td>4th</td>
-                      <td>4th semester BSc Engineering</td>
-                      <td>2021</td>
-                      <td>
-                        <button className="print-button">Details</button>
-                      </td>
-                    </tr>
+                    {userInformation[1]?.map((sem) => (
+                      <tr>
+                        <td>{sem.semester}</td>
+                        <td>{sem.examName}</td>
+                        <td>{sem.examYear}</td>
+                        <td>
+                          <Link
+                            to={`/activities/sem-${sem.semester}/y-${sem.examYear}`}
+                          >
+                            <Button className="print-button">Details</Button>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

@@ -1,0 +1,25 @@
+.width50{
+    width: 50%;
+    border: 1px solid rgb(189, 189, 189);
+    margin: 0 auto ;
+
+    margin-top: 4vh;
+}
+.width80{
+    width: 80%;
+    margin: 5%;
+}
+.width20{
+    margin: 5%;
+}
+.showiamge{
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.showiamge img{
+    width: 80%;
+    margin-bottom: 3em;
+    height: 80%;
+}
