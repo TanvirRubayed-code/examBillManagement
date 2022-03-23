@@ -49,7 +49,7 @@ const ChangePropic = () => {
 
     formData.append("user[]", localStorage.getItem("userLogin"));
     let url =
-      "http://localhost:8080/examBillManagement/src/server/uploadPic.php";
+      "http://localhost/examBillManagement/src/server/uploadPic.php";
 
     axios
       .post(url, formData, {

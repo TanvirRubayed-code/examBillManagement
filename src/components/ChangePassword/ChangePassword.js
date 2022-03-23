@@ -73,9 +73,9 @@ notifySuccess() {
       confirm_pass: this.state.confirm_pass,
     };
 
-    // http://localhost:8080/examRemunaration/changePassword.php
+    // http://localhost/examRemunaration/changePassword.php
 
-    fetch("http://localhost:8080/examBillManagement/src/server/changePassword.php", {
+    fetch("http://localhost/examBillManagement/src/server/changePassword.php", {
       // URL
       body: JSON.stringify(pass), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

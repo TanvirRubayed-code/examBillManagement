@@ -96,7 +96,7 @@ export class SemesterInfo extends Component  {
     console.log(semInfo);
 
 
-    fetch("http://localhost:8080/examBillManagement/src/server/insertExamInfo.php", {
+    fetch("http://localhost/examBillManagement/src/server/insertExamInfo.php", {
       // URL
       body: JSON.stringify(semInfo), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

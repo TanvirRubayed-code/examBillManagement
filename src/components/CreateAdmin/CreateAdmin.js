@@ -61,7 +61,7 @@ class CreateAdmin extends Component {
       password: this.state.password,
     };
 
-    fetch("http://localhost:8080/examBillManagement/src/server/setAdmin.php", {
+    fetch("http://localhost/examBillManagement/src/server/setAdmin.php", {
       // URL
       body: JSON.stringify(addAdmin), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

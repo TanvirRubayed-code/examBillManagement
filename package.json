@@ -52,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.4",
+    "install": "^0.13.0",
+    "npm": "^8.5.5"
   }
 }

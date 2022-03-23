@@ -27,7 +27,7 @@ export class EditUser extends Component {
 
 
   componentDidMount() {
-    fetch("http://localhost:8080/examBillManagement/src/server/seeUserInfoToEdit.php", {
+    fetch("http://localhost/examBillManagement/src/server/seeUserInfoToEdit.php", {
       // URL
       body: JSON.stringify(this.state.teacher_id), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -77,9 +77,9 @@ export class EditUser extends Component {
       mobile_no: this.state.mobile_no,
     };
     console.log(updatedInfo);
-    // http://localhost:8080/examRemunaration/updateInfo.php
+    // http://localhost/examRemunaration/updateInfo.php
 
-    fetch("http://localhost:8080/examBillManagement/src/server/updateInfo.php", {
+    fetch("http://localhost/examBillManagement/src/server/updateInfo.php", {
       // URL
       body: JSON.stringify(updatedInfo), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

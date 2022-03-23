@@ -84,7 +84,7 @@ export class TheoryActivities extends Component {
       question_photocopier: this.state.question_photocopier,
     };
 
-    fetch("http://localhost:8080/examBillManagement/src/server/theoryActivities.php", {
+    fetch("http://localhost/examBillManagement/src/server/theoryActivities.php", {
       // URL
       body: JSON.stringify(theoryAct), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

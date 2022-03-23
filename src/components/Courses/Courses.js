@@ -66,7 +66,7 @@ export class Courses extends Component {
       course_type: this.state.course_type
     };
 
-    fetch("http://localhost:8080/examBillManagement/src/server/courseInsert.php", {
+    fetch("http://localhost/examBillManagement/src/server/courseInsert.php", {
       // URL
       body: JSON.stringify(obj), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

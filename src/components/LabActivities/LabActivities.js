@@ -87,7 +87,7 @@ export class LabActivities extends Component {
       total_examinee_project: this.state.total_examinee_project,
     };
 
-    fetch("http://localhost:8080/examBillManagement/src/server/labActivities.php", {
+    fetch("http://localhost/examBillManagement/src/server/labActivities.php", {
       // URL
       body: JSON.stringify(labAct), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

@@ -59,7 +59,7 @@ export class ExamCommittee extends Component {
     };
     
 
-    fetch("http://localhost:8080/examBillManagement/src/server/insertExamCommittee.php", {
+    fetch("http://localhost/examBillManagement/src/server/insertExamCommittee.php", {
       // URL
       body: JSON.stringify(comittee), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

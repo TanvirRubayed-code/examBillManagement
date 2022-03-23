@@ -72,7 +72,7 @@ export class Tabulation extends Component {
     };
 
     fetch(
-      "http://localhost:8080/examBillManagement/src/server/insertTabulationCommittee.php",
+      "http://localhost/examBillManagement/src/server/insertTabulationCommittee.php",
       {
         // URL
         body: JSON.stringify(tabComittee), // data you send.

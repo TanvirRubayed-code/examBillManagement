@@ -3,7 +3,6 @@ import { useHistory } from "react-router";
 import BillTop from "../BillTop/BillTop";
 import { Button, ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import "./UserHome.css";
-import propic from "../images/men.jpg";
 import { Link, Route, BrowserRouter, Switch } from "react-router-dom";
 import ActivitiesDetails from "../ActivitiesDetails/ActivitiesDetails";
 import Footer from "../Footer/Footer";
@@ -38,7 +37,7 @@ const UserHome = (props) => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:8080/examBillManagement/src/server/userData.php", {
+    fetch("http://localhost/examBillManagement/src/server/userData.php", {
       // URL
       body: JSON.stringify(username), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -90,7 +89,7 @@ const UserHome = (props) => {
               <div style={userLeftSt} className="col-3">
                 {
                   image === '12345678.jpg' ? 
-                  <img className="propic" ></img> :
+                  <img className="propic" alt="Profile"></img> :
                   image && <img
                   className="propic"
                   src={require(`../../server/images/${image}`).default}

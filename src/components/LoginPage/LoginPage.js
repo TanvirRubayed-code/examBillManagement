@@ -84,7 +84,7 @@ export class LoginPage extends Component {
 
     this.setState({ teacherModalShow: !this.state.teacherModalShow });
 
-    fetch("http://localhost:8080/examBillManagement/src/server/teacherLoginAuth.php", {
+    fetch("http://localhost/examBillManagement/src/server/teacherLoginAuth.php", {
       // URL
       body: JSON.stringify(userData), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -115,9 +115,9 @@ export class LoginPage extends Component {
       localStorage.setItem("userLogin", data[0].username);
     }
   }
-  // let teacherUrl = 'http://localhost:8080/examRemunaration/teacherLoginAuth.php'
+  // let teacherUrl = 'http://localhost/examRemunaration/teacherLoginAuth.php'
 
-  // let url = "http://localhost:8080/examRemunaration/adminLogin.php";
+  // let url = "http://localhost/examRemunaration/adminLogin.php";
 
   onAdminSubmit(e) {
     e.preventDefault();
@@ -128,7 +128,7 @@ export class LoginPage extends Component {
 
     this.setState({ adminModalShow: !this.state.adminModalShow });
 
-    fetch("http://localhost:8080/examBillManagement/src/server/adminLogin.php", {
+    fetch("http://localhost/examBillManagement/src/server/adminLogin.php", {
       // URL
       body: JSON.stringify(adminData), // data you send.
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached

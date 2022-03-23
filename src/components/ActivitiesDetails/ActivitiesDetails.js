@@ -15,10 +15,10 @@ const ActivitiesDetails = () => {
     username:sessionStorage.getItem('username')
   }
 
-// http://localhost:8080/examRemunaration/activitiesDetails.php
+// http://localhost/examRemunaration/activitiesDetails.php
 
 useEffect(() => {
-  fetch("http://localhost:8080/examBillManagement/src/server/activitiesDetails.php", {
+  fetch("http://localhost/examBillManagement/src/server/activitiesDetails.php", {
     // URL
     body: JSON.stringify(obj), // data you send.
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
